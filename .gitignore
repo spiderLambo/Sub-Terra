@@ -67,3 +67,11 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.user
+.clang-format-ignore
