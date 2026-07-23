@@ -60,3 +60,8 @@ class Ingenieur : public Player {
   Ingenieur();
   ~Ingenieur();
 };
+class Grimpeur : public Player {
+ public:
+  Grimpeur();
+  ~Grimpeur();
+};

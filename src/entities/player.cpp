@@ -62,3 +62,7 @@ Geologue::~Geologue() {}
 // Ingénieur
 Ingenieur::Ingenieur() : Player(4, "#0000FF") {}
 Ingenieur::~Ingenieur() {}
+
+// Grimpeur
+Grimpeur::Grimpeur() : Player(5, "#551166") {}
+Grimpeur::~Grimpeur() {}
