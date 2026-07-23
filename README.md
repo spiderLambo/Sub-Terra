@@ -36,6 +36,6 @@ L'objectif est ici d'adapter le jeu de société [Sub Terra](https://www.nutspub
 ## Ressources
 
 - [Architecture](/docs/ARCHITECTURE.md)
-- [Installation]()
-- [Changelog]()
+- [Installation](/docs/INSTALLATION.md)
+- [Changelog](./CHANGELOG.md)
 - [Developpement]()
