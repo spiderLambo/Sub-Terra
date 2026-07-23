@@ -50,3 +50,8 @@ class Eclaireur : public Player {
 
   void setCache() override;
 };
+class Geologue : public Player {
+ public:
+  Geologue();
+  ~Geologue();
+};

@@ -54,3 +54,7 @@ Plongeur::~Plongeur() {}
 Eclaireur::Eclaireur() : Player(2, "#000000") { this->cache = true; }
 Eclaireur::~Eclaireur() {}
 void Eclaireur::setCache() {}
+
+// Géologue
+Geologue::Geologue() : Player(3, "#886644") {}
+Geologue::~Geologue() {}

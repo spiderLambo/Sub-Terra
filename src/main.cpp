@@ -13,5 +13,11 @@ int main() {
   e.setCache();
   std::cout << e.estCache() << std::endl;
 
+  Geologue g;
+  std::cout << "Geologuqe" << std::endl;
+  std::cout << g.estCache() << std::endl;
+  g.setCache();
+  std::cout << g.estCache() << std::endl;
+
   return 0;
 }
