@@ -21,7 +21,7 @@ int Player::getActions() const { return this->actions; }
 // Gestion de l'etat
 
 void Player::subirDegats(unsigned int degats) {
-  if (degats <= maxPv) {
+  if (degats <= maxPv()) {
     this->pv -= degats;
   } else
     this->pv = 0;
@@ -29,7 +29,7 @@ void Player::subirDegats(unsigned int degats) {
   if (this->pv == 0) this->conscient = false;
 }
 void Player::recupererPv() {
-  if (this->pv < maxPv) {
+  if (this->pv < maxPv()) {
     ++this->pv;
   }
 }
@@ -70,3 +70,7 @@ Grimpeur::~Grimpeur() {}
 // Médecin
 Medecin::Medecin() : Player(6, "#FFFFFF") {}
 Medecin::~Medecin() {}
+
+// Garde du corp
+GardeDuCorp::GardeDuCorp() : Player(7, "#FF0000") { this->pv = 5; }
+GardeDuCorp::~GardeDuCorp() {}

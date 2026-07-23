@@ -19,11 +19,35 @@ int main() {
 
   Grimpeur gr;
   std::cout << "Grimpeur" << std::endl;
-  std::cout << gr.getCouleur() << std::endl;
+  std::cout << gr.getPv() << std::endl;
+  gr.subirDegats(20);
+  std::cout << gr.getPv() << std::endl;
+  gr.recupererPv();
+  gr.recupererPv();
+  std::cout << gr.getPv() << std::endl;
+  gr.recupererPv();
+  std::cout << gr.getPv() << std::endl;
+  gr.recupererPv();
+  std::cout << gr.getPv() << std::endl;
 
   Medecin m;
   std::cout << "Medecin" << std::endl;
   std::cout << m.getCouleur() << std::endl;
+
+  GardeDuCorp gdc;
+  std::cout << "Garde du corp" << std::endl;
+  std::cout << gdc.getPv() << std::endl;
+  gdc.subirDegats(20);
+  std::cout << gdc.getPv() << std::endl;
+  gdc.recupererPv();
+  gdc.recupererPv();
+  gdc.recupererPv();
+  gdc.recupererPv();
+  std::cout << gdc.getPv() << std::endl;
+  gdc.recupererPv();
+  std::cout << gdc.getPv() << std::endl;
+  gdc.recupererPv();
+  std::cout << gdc.getPv() << std::endl;
 
   return 0;
 }

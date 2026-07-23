@@ -4,14 +4,15 @@
 
 class Player {
  protected:
-  static const int maxPv = 3;
-  int pv;
+  unsigned int pv;
   int rang;
   std::string couleur;
 
   bool conscient;
   bool cache;
   int actions;
+
+  virtual unsigned int maxPv() const { return 3; }
 
  public:
   Player(int rang, std::string couleur);
@@ -69,4 +70,12 @@ class Medecin : public Player {
  public:
   Medecin();
   ~Medecin();
+};
+class GardeDuCorp : public Player {
+ protected:
+  unsigned int maxPv() const override { return 5; }
+
+ public:
+  GardeDuCorp();
+  ~GardeDuCorp();
 };
