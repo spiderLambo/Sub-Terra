@@ -58,3 +58,7 @@ void Eclaireur::setCache() {}
 // Géologue
 Geologue::Geologue() : Player(3, "#886644") {}
 Geologue::~Geologue() {}
+
+// Ingénieur
+Ingenieur::Ingenieur() : Player(4, "#0000FF") {}
+Ingenieur::~Ingenieur() {}

@@ -55,3 +55,8 @@ class Geologue : public Player {
   Geologue();
   ~Geologue();
 };
+class Ingenieur : public Player {
+ public:
+  Ingenieur();
+  ~Ingenieur();
+};

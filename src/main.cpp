@@ -19,5 +19,11 @@ int main() {
   g.setCache();
   std::cout << g.estCache() << std::endl;
 
+  Ingenieur i;
+  std::cout << "Ingenieur" << std::endl;
+  std::cout << i.estCache() << std::endl;
+  i.setCache();
+  std::cout << i.estCache() << std::endl;
+
   return 0;
 }
