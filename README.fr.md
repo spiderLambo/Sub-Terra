@@ -1,10 +1,10 @@
 # SUB TERRA
 
-Read in: [English](README.md) | [Français](README.fr.md)
+Lire en: [English](README.md) | [Français](README.fr.md)
 
-The goal of this project is to adapt the board game [Sub Terra](https://www.nutspublishing.com/eshop/sub-terra-en) into a video game.
+L'objectif est ici d'adapter le jeu de société [Sub Terra](https://www.nutspublishing.com/eshop/sub-terra-fr) en jeu vidéo.
 
-## Quick Start
+## Installation rapide
 
 - <details>
   <summary>Linux (Ubuntu / Debian)</summary>
@@ -37,7 +37,7 @@ The goal of this project is to adapt the board game [Sub Terra](https://www.nuts
 
 ## Ressources
 
-- [Architecture](/docs/en/ARCHITECTURE.md)
-- [Installation](/docs/en/INSTALLATION.md)
-- [Development](/docs/en/DEVELOPEMENT.md)
-- [Changelog](CHANGELOG.md)
+- [Architecture](/docs/fr/ARCHITECTURE.md)
+- [Installation](/docs/fr/INSTALLATION.md)
+- [Developpement](/docs/fr/DEVELOPPEMENT.md)
+- [Changelog](/CHANGELOG.md)

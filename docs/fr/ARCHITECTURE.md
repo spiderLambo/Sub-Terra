@@ -1,5 +1,7 @@
 # Architecture
 
+Lire en: [English](../en/ARCHITECTURE.md) | [Français](ARCHITECTURE.md)
+
 ## Structure du projet
 
 ```
@@ -38,7 +40,7 @@ Pour maintenir une base de code propre, modulaire et facile à maintenir, le pro
 | [`display/`]()           | Gérer l'affichage                    |
 | [`utils/`]()             | Gérer les événements globaux         |
 
-### entities
+### entities/
 
 - <details>
     <summary><code>player.cpp</code></summary>
@@ -72,15 +74,15 @@ Pour maintenir une base de code propre, modulaire et facile à maintenir, le pro
 
   ### Autres méthodes
 
-  | nom                         | visibilité | utilité                        |
-  | --------------------------- | ---------- | ------------------------------ |
-  | subirDegats(`degats`)       | public     | Inflige `degats` dégâts        |
-  | recupererPv                 | public     | Ajoute 1 pv                    |
-  | setConscient                | public     | Change l'attribut `conscient`  |
-  | setCache                    | public     | Change l'attribut `cache`      |
-  | resetActions                | public     | MMet le nombre d'actions à `2` |
-  | ajouterActions(`nbActions`) | public     | Ajoute `nbActions` actions     |
-  | utiliserActions(`action`)   | public     | Effectue l'action `action`     |
+  | nom                         | visibilité | utilité                       |
+  | --------------------------- | ---------- | ----------------------------- |
+  | subirDegats(`degats`)       | public     | Inflige `degats` dégâts       |
+  | recupererPv                 | public     | Ajoute 1 pv                   |
+  | setConscient                | public     | Change l'attribut `conscient` |
+  | setCache                    | public     | Change l'attribut `cache`     |
+  | resetActions                | public     | Met le nombre d'actions à `2` |
+  | ajouterActions(`nbActions`) | public     | Ajoute `nbActions` actions    |
+  | utiliserActions(`action`)   | public     | Effectue l'action `action`    |
 
   ## Plongeur
 

@@ -1,5 +1,7 @@
 # Installation
 
+Lire en: [English](../en/INSTALLATION.md) | [Français](INSTALLATION.md)
+
 ## Prérequis logiciels
 
 Avant de commencer, assurez-vous d'avoir installé les outils fondamentaux sur votre machine :
@@ -74,8 +76,6 @@ chmod +x newbuild.sh
 
 </details>
 
----
-
 ## Compilation manuelle (sans newbuild.sh)
 
 Si vous préférez compiler le projet manuellement sans passer par le script :
@@ -93,8 +93,6 @@ make
 ```bash
 ./subterra.out
 ```
-
----
 
 ## Résolution des problèmes courants
 
