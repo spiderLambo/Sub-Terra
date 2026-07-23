@@ -20,7 +20,14 @@ int Player::getActions() const { return this->actions; }
 
 // Gestion de l'etat
 
-void Player::subirDegats(unsigned int degats) { this->pv -= degats; }
+void Player::subirDegats(unsigned int degats) {
+  if (degats <= maxPv) {
+    this->pv -= degats;
+  } else
+    this->pv = 0;
+
+  if (this->pv == 0) this->conscient = false;
+}
 void Player::recupererPv() {
   if (this->pv < maxPv) {
     ++this->pv;
@@ -36,3 +43,14 @@ void Player::ajouterActions(unsigned int nbAction) {
   this->actions += nbAction;
 }
 // TODO: Implementer utiliserActions
+
+// ------------- Roles -------------
+
+// Plongeur
+Plongeur::Plongeur() : Player(1, "#FFFF00") {}
+Plongeur::~Plongeur() {}
+
+// Eclaireur
+Eclaireur::Eclaireur() : Player(2, "#000000") { this->cache = true; }
+Eclaireur::~Eclaireur() {}
+void Eclaireur::setCache() {}

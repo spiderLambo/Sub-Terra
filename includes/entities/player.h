@@ -3,7 +3,7 @@
 #include <string>
 
 class Player {
- private:
+ protected:
   static const int maxPv = 3;
   int pv;
   int rang;
@@ -11,14 +11,13 @@ class Player {
 
   bool conscient;
   bool cache;
-
   int actions;
 
  public:
   Player(int rang, std::string couleur);
-  ~Player();
+  virtual ~Player() = 0;
 
-  //   Getters
+  // Getters
   int getPv() const;
   int getRang() const;
   std::string getCouleur() const;
@@ -30,10 +29,24 @@ class Player {
   void subirDegats(unsigned int degats);
   void recupererPv();
   void setConscient();
-  void setCache();
+  virtual void setCache();
 
   //   Actions
   void resetActions();
   void ajouterActions(unsigned int nbActions);
   void utiliserActions(std::string action);
+};
+
+// ------------- Roles -------------
+class Plongeur : public Player {
+ public:
+  Plongeur();
+  ~Plongeur();
+};
+class Eclaireur : public Player {
+ public:
+  Eclaireur();
+  ~Eclaireur();
+
+  void setCache() override;
 };
