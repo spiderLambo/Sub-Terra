@@ -74,3 +74,7 @@ Medecin::~Medecin() {}
 // Garde du corp
 GardeDuCorp::GardeDuCorp() : Player(7, "#FF0000") { this->pv = 5; }
 GardeDuCorp::~GardeDuCorp() {}
+
+// Chef
+Chef::Chef() : Player(8, "#002200") {}
+Chef::~Chef() {}

@@ -49,5 +49,9 @@ int main() {
   gdc.recupererPv();
   std::cout << gdc.getPv() << std::endl;
 
+  Chef c;
+  std::cout << "Chef" << std::endl;
+  std::cout << c.getCouleur() << std::endl;
+
   return 0;
 }

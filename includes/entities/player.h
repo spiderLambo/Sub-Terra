@@ -79,3 +79,8 @@ class GardeDuCorp : public Player {
   GardeDuCorp();
   ~GardeDuCorp();
 };
+class Chef : public Player {
+ public:
+  Chef();
+  ~Chef();
+};
