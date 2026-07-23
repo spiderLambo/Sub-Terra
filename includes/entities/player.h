@@ -4,6 +4,7 @@
 
 class Player {
  private:
+  static const int maxPv = 3;
   int pv;
   int rang;
   std::string couleur;
