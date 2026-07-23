@@ -21,5 +21,9 @@ int main() {
   std::cout << "Grimpeur" << std::endl;
   std::cout << gr.getCouleur() << std::endl;
 
+  Medecin m;
+  std::cout << "Medecin" << std::endl;
+  std::cout << m.getCouleur() << std::endl;
+
   return 0;
 }

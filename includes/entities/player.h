@@ -65,3 +65,8 @@ class Grimpeur : public Player {
   Grimpeur();
   ~Grimpeur();
 };
+class Medecin : public Player {
+ public:
+  Medecin();
+  ~Medecin();
+};

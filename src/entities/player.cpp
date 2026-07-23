@@ -66,3 +66,7 @@ Ingenieur::~Ingenieur() {}
 // Grimpeur
 Grimpeur::Grimpeur() : Player(5, "#551166") {}
 Grimpeur::~Grimpeur() {}
+
+// Médecin
+Medecin::Medecin() : Player(6, "#FFFFFF") {}
+Medecin::~Medecin() {}
