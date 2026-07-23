@@ -71,9 +71,9 @@ Grimpeur::~Grimpeur() {}
 Medecin::Medecin() : Player(6, "#FFFFFF") {}
 Medecin::~Medecin() {}
 
-// Garde du corp
-GardeDuCorp::GardeDuCorp() : Player(7, "#FF0000") { this->pv = 5; }
-GardeDuCorp::~GardeDuCorp() {}
+// Garde du corps
+GardeDuCorps::GardeDuCorps() : Player(7, "#FF0000") { this->pv = 5; }
+GardeDuCorps::~GardeDuCorps() {}
 
 // Chef
 Chef::Chef() : Player(8, "#002200") {}

@@ -71,13 +71,13 @@ class Medecin : public Player {
   Medecin();
   ~Medecin();
 };
-class GardeDuCorp : public Player {
+class GardeDuCorps : public Player {
  protected:
   unsigned int maxPv() const override { return 5; }
 
  public:
-  GardeDuCorp();
-  ~GardeDuCorp();
+  GardeDuCorps();
+  ~GardeDuCorps();
 };
 class Chef : public Player {
  public:
