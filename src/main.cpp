@@ -1,6 +1,3 @@
 #include "main.h"
 
-int main() {
-  hello();
-  return 0;
-}
+int main() { return 0; }
