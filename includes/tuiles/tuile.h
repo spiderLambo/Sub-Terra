@@ -18,12 +18,12 @@ enum TuileType {
 };
 
 enum Evenement {
-  Inondation,
-  Emanation,
-  Eboulement,
-  Horreur,
-  ArriveeJoueur,
-  ActionJoueur
+  INONDATION,
+  EMANATION,
+  EBOULEMENT,
+  HORREUR,
+  ARRIVEE_JOUEUR,
+  ACTION_JOUEUR
 };
 
 class Tuile {
