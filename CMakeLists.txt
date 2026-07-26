@@ -9,6 +9,7 @@ add_compile_options(-Wall -g)
 add_executable(${PROJECT_NAME}.out
   src/main.cpp
   src/entities/player.cpp
+  src/tuiles/tuile.cpp
 )
 
 target_include_directories(${PROJECT_NAME}.out PRIVATE includes)
