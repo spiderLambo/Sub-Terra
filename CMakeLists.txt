@@ -10,6 +10,16 @@ add_executable(${PROJECT_NAME}.out
   src/main.cpp
   src/entities/player.cpp
   src/tuiles/tuile.cpp
+  src/tuiles/tuile_corde.cpp
+  src/tuiles/tuile_depart.cpp
+  src/tuiles/tuile_effondrement.cpp
+  src/tuiles/tuile_emanation.cpp
+  src/tuiles/tuile_horreur.cpp
+  src/tuiles/tuile_inondable.cpp
+  src/tuiles/tuile_ordinaire.cpp
+  src/tuiles/tuile_retrecissement.cpp
+  src/tuiles/tuile_sortie.cpp
+  src/tuiles/tuile_terrain_accidente.cpp
 )
 
 target_include_directories(${PROJECT_NAME}.out PRIVATE includes)

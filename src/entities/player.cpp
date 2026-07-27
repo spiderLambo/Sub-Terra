@@ -17,6 +17,7 @@ std::string Player::getCouleur() const { return this->couleur; }
 bool Player::estCache() const { return this->cache; }
 bool Player::estConscient() const { return this->conscient; }
 int Player::getActions() const { return this->actions; }
+int Player::getTuileID() const { return this->tuileID; }
 
 // Gestion de l'etat
 

@@ -12,6 +12,8 @@ class Player {
   bool cache;
   int actions;
 
+  int tuileID;
+
   virtual unsigned int maxPv() const { return 3; }
 
  public:
@@ -25,6 +27,7 @@ class Player {
   bool estConscient() const;
   bool estCache() const;
   int getActions() const;
+  int getTuileID() const;
 
   // Gestion de l'etat
   void subirDegats(unsigned int degats);

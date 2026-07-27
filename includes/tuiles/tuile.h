@@ -19,9 +19,9 @@ enum TuileType {
 
 enum Evenement {
   INONDATION,
-  EMANATION,
+  TOXIQUE,
   EBOULEMENT,
-  HORREUR,
+  SPAWN_HORREUR,
   ARRIVEE_JOUEUR,
   ACTION_JOUEUR
 };
@@ -78,9 +78,11 @@ public:
 class TuileEffondrement : Tuile {
 private:
   bool effondre = false;
+  std::pair<int, int> numEboulement;
 public:
-  TuileEffondrement(int id, std::array<bool, 4> acces);
+  TuileEffondrement(int id, std::array<bool, 4> acces, std::pair<int, int> numEboulement);
   void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
+  bool getAcces(int direction, Player* player = nullptr) override;
 };
 
 class TuileHorreur : Tuile {
@@ -95,20 +97,14 @@ public:
   void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
 };
 
-class TuileCorniche : Tuile {
+class TuileCorde : Tuile {
 private:
   bool corde = false;
+  int cordeDir;
 public:
-  TuileCorniche(int id, std::array<bool, 4> acces);
+  TuileCorde(int id, std::array<bool, 4> acces, int cordeDir, enum TuileType type);
   void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
-};
-
-class TuileChute : Tuile {
-private:
-  bool corde = false;
-public:
-  TuileChute(int id, std::array<bool, 4> acces);
-  void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
+  bool getAcces(int direction, Player* player = nullptr) override;
 };
 
 class TuileTerrainAccidente : Tuile {
