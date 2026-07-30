@@ -4,32 +4,28 @@ TuileEffondrement::TuileEffondrement(int id, std::array<bool, 4> acces, std::pai
   this->numEboulement = numEboulement;
 }
 
-void TuileEffondrement::effetTuile(enum Evenement evenement, std::array<Player*, 4> players) {
+void TuileEffondrement::effetTuile(std::array<Player*, 6> players) {
+  // vérification RNG numEboulement
+  effondre = true;
   bool gardeDuCorps = false;
-  switch (evenement) {
-    case ACTION_JOUEUR:
-      // vérification RNG
-      effondre = false;
-      break;
-    case EBOULEMENT:
-      // vérification RNG numEboulement
-      effondre = true;
-      for (int i = 0; i < 4; i++) {
-        if (players[i] != nullptr && players[i]->getRang() == 7) {
-          gardeDuCorps = true;
-        }
-      }
-      for (int i = 0; i < 4; i++) {
-        if (players[i] != nullptr) {
-          if (!gardeDuCorps || players[i]->getRang() == 7) {
-            players[i]->subirDegats(3);
-          }
-        }
-      }
-      break;
-    default:
-      break;
+  for (int i = 0; i < 6; i++) {
+    if (players[i] != nullptr && players[i]->getRang() == 7) {
+      gardeDuCorps = true;
+    }
   }
+  for (int i = 0; i < 6; i++) {
+    if (players[i] != nullptr) {
+      if (!gardeDuCorps || players[i]->getRang() == 7) {
+        if (players[i]->getRang() == 4) players[i]->subirDegats(1);
+        else players[i]->subirDegats(3)
+      }
+    }
+  }
+}
+
+void TuileEffondrement::effetActionJoueur(Player* player) {
+  // vérification RNG
+  effondre = false;
 }
 
 bool TuileEffondrement::getAcces(int direction, Player* player) {

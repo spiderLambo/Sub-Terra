@@ -4,15 +4,9 @@ TuileCorde::TuileCorde(int id, std::array<bool, 4> acces, int cordeDir, enum Tui
   this->cordeDir = cordeDir;
 }
 
-void TuileCorde::effetTuile(enum Evenement evenement, std::array<Player*, 4> players) {
-  switch (evenement) {
-    case ACTION_JOUEUR:
-      // vérification RNG
-      corde = true;
-      break;
-    default:
-      break;
-  }
+void TuileCorde::effetActionJoueur(Player* player) {
+  // vérification RNG
+  corde = true;
 }
 
 bool TuileCorde::getAcces(int direction, Player* player) {

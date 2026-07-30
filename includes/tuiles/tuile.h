@@ -17,15 +17,6 @@ enum TuileType {
   TERRAIN_ACCIDENTE
 };
 
-enum Evenement {
-  INONDATION,
-  TOXIQUE,
-  EBOULEMENT,
-  SPAWN_HORREUR,
-  ARRIVEE_JOUEUR,
-  ACTION_JOUEUR
-};
-
 class Tuile {
 protected:
   unsigned int id;
@@ -37,26 +28,26 @@ public:
   Tuile(int id, enum TuileType type, std::array<bool, 4> acces, std::string couleur);
 
   void rotation();
-  virtual void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) = 0;
+  virtual void effetTuile(std::array<Player*, 6> players);
+  virtual void effetArriveeJoueur(Player* player);
+  virtual void effetSortieJoueur(Player* player);
+  virtual void effetActionJoueur(Player* player);
   virtual bool getAcces(int direction, Player* player = nullptr);
 };
 
 class TuileDepart : Tuile {
 public:
   TuileDepart(int id);
-  void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
 };
 
 class TuileSortie : Tuile {
 public:
   TuileSortie(int id);
-  void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
 };
 
 class TuileOrdinaire : Tuile {
 public:
   TuileOrdinaire(int id, std::array<bool, 4> acces);
-  void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
 };
 
 class TuileInondable : Tuile {
@@ -64,15 +55,18 @@ private:
   bool inondee = false;
 public:
   TuileInondable(int id, std::array<bool, 4> acces);
-  void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
+  void effetTuile(std::array<Player*, 6> players) override;
 };
 
 class TuileEmanation : Tuile {
 private:
   bool toxique = false;
+  bool gardeDuCorps = false;
 public:
   TuileEmanation(int id, std::array<bool, 4> acces);
-  void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
+  void effetTuile(std::array<Player*, 6> players) override;
+  void effetArriveeJoueur(Player* player) override;
+  void effetSortieJoueur(Player* player) override;
 };
 
 class TuileEffondrement : Tuile {
@@ -81,20 +75,20 @@ private:
   std::pair<int, int> numEboulement;
 public:
   TuileEffondrement(int id, std::array<bool, 4> acces, std::pair<int, int> numEboulement);
-  void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
+  void effetTuile(std::array<Player*, 6> players) override;
+  void effetActionJoueur(Player* player) override;
   bool getAcces(int direction, Player* player = nullptr) override;
 };
 
 class TuileHorreur : Tuile {
 public:
   TuileHorreur(int id, std::array<bool, 4> acces);
-  void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
+  void effetTuile(std::array<Player*, 6> players) override;
 };
 
 class TuileRetrecissement : Tuile {
 public:
   TuileRetrecissement(int id, std::array<bool, 4> acces);
-  void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
 };
 
 class TuileCorde : Tuile {
@@ -103,12 +97,12 @@ private:
   int cordeDir;
 public:
   TuileCorde(int id, std::array<bool, 4> acces, int cordeDir, enum TuileType type);
-  void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
+  void effetActionJoueur(Player* player) override;
   bool getAcces(int direction, Player* player = nullptr) override;
 };
 
 class TuileTerrainAccidente : Tuile {
 public:
   TuileTerrainAccidente(int id, std::array<bool, 4> acces);
-  void effetTuile(enum Evenement evenement, std::array<Player*, 4> players) override;
+  void effetArriveeJoueur(Player* player) override;
 };

@@ -15,6 +15,22 @@ void Tuile::rotation() {
   acces[0] = temp;
 }
 
+void effetTuile(std::array<Player*, 6> players) {
+  return;
+}
+
+void effetArriveeJoueur(Player* player) {
+  return;
+}
+
+void effetSortieJoueur(Player* player) {
+  return;
+}
+
+void effetActionJoueur(Player* player) {
+  return;
+}
+
 bool Tuile::getAcces(int direction, Player* player) {
   return acces[direction];
 }
