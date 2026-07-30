@@ -15,19 +15,19 @@ void Tuile::rotation() {
   acces[0] = temp;
 }
 
-void effetTuile(std::array<Player*, 6> players) {
+void Tuile::effetTuile(std::array<Player*, 6> players) {
   return;
 }
 
-void effetArriveeJoueur(Player* player) {
+void Tuile::effetArriveeJoueur(Player* player) {
   return;
 }
 
-void effetSortieJoueur(Player* player) {
+void Tuile::effetSortieJoueur(Player* player) {
   return;
 }
 
-void effetActionJoueur(Player* player) {
+void Tuile::effetActionJoueur(Player* player) {
   return;
 }
 

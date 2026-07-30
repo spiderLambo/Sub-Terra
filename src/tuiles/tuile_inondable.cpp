@@ -13,7 +13,7 @@ void TuileInondable::effetTuile(std::array<Player*, 6> players) {
   for (int i = 0; i < 6; i++) {
     if (players[i] != nullptr && players[i]->getRang() != 1) {
       if (!gardeDuCorps || players[i]->getRang() == 7) {
-        players[i]->subirDegats(1)
+        players[i]->subirDegats(1);
       }
     }
   }

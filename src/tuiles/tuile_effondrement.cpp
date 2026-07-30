@@ -17,7 +17,7 @@ void TuileEffondrement::effetTuile(std::array<Player*, 6> players) {
     if (players[i] != nullptr) {
       if (!gardeDuCorps || players[i]->getRang() == 7) {
         if (players[i]->getRang() == 4) players[i]->subirDegats(1);
-        else players[i]->subirDegats(3)
+        else players[i]->subirDegats(3);
       }
     }
   }
