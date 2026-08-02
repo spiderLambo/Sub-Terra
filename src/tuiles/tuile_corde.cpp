@@ -1,6 +1,6 @@
 #include "tuiles/tuile.h"
 
-TuileCorde::TuileCorde(int id, std::array<bool, 4> acces, int cordeDir, enum TuileType type) : Tuile(id, type, acces, "#BD8AFF") {
+TuileCorde::TuileCorde(int id, int cordeDir, enum TuileType type) : Tuile(id, type, {true, false, true, false}, "#BD8AFF") {
   this->cordeDir = cordeDir;
 }
 

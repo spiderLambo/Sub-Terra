@@ -20,6 +20,7 @@ add_executable(${PROJECT_NAME}.out
   src/tuiles/tuile_retrecissement.cpp
   src/tuiles/tuile_sortie.cpp
   src/tuiles/tuile_terrain_accidente.cpp
+  src/plateau.cpp
 )
 
 target_include_directories(${PROJECT_NAME}.out PRIVATE includes)

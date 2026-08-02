@@ -7,6 +7,8 @@ Tuile::Tuile(int id, enum TuileType type, std::array<bool, 4> acces, std::string
   this->couleur = couleur;
 }
 
+int Tuile::getId() { return id; }
+
 void Tuile::rotation() {
   bool temp = acces[3];
   for (int i = 3; i > 0; i--) {

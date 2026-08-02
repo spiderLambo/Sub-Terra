@@ -19,13 +19,16 @@ enum TuileType {
 
 class Tuile {
 protected:
-  unsigned int id;
+  int id;
   enum TuileType type;
   std::array<bool, 4> acces;
   std::string couleur = "#FFFFFF";
 
 public:
   Tuile(int id, enum TuileType type, std::array<bool, 4> acces, std::string couleur);
+  virtual ~Tuile() = default;
+
+  int getId();
 
   void rotation();
   virtual void effetTuile(std::array<Player*, 6> players);
@@ -35,22 +38,22 @@ public:
   virtual bool getAcces(int direction, Player* player = nullptr);
 };
 
-class TuileDepart : Tuile {
+class TuileDepart : public Tuile {
 public:
   TuileDepart(int id);
 };
 
-class TuileSortie : Tuile {
+class TuileSortie : public Tuile {
 public:
   TuileSortie(int id);
 };
 
-class TuileOrdinaire : Tuile {
+class TuileOrdinaire : public Tuile {
 public:
   TuileOrdinaire(int id, std::array<bool, 4> acces);
 };
 
-class TuileInondable : Tuile {
+class TuileInondable : public Tuile {
 private:
   bool inondee = false;
 public:
@@ -58,7 +61,7 @@ public:
   void effetTuile(std::array<Player*, 6> players) override;
 };
 
-class TuileEmanation : Tuile {
+class TuileEmanation : public Tuile {
 private:
   bool toxique = false;
   bool gardeDuCorps = false;
@@ -69,7 +72,7 @@ public:
   void effetSortieJoueur(Player* player) override;
 };
 
-class TuileEffondrement : Tuile {
+class TuileEffondrement : public Tuile {
 private:
   bool effondre = false;
   std::pair<int, int> numEboulement;
@@ -80,28 +83,28 @@ public:
   bool getAcces(int direction, Player* player = nullptr) override;
 };
 
-class TuileHorreur : Tuile {
+class TuileHorreur : public Tuile {
 public:
   TuileHorreur(int id, std::array<bool, 4> acces);
   void effetTuile(std::array<Player*, 6> players) override;
 };
 
-class TuileRetrecissement : Tuile {
+class TuileRetrecissement : public Tuile {
 public:
   TuileRetrecissement(int id, std::array<bool, 4> acces);
 };
 
-class TuileCorde : Tuile {
+class TuileCorde : public Tuile {
 private:
   bool corde = false;
   int cordeDir;
 public:
-  TuileCorde(int id, std::array<bool, 4> acces, int cordeDir, enum TuileType type);
+  TuileCorde(int id, int cordeDir, enum TuileType type);
   void effetActionJoueur(Player* player) override;
   bool getAcces(int direction, Player* player = nullptr) override;
 };
 
-class TuileTerrainAccidente : Tuile {
+class TuileTerrainAccidente : public Tuile {
 public:
   TuileTerrainAccidente(int id, std::array<bool, 4> acces);
   void effetArriveeJoueur(Player* player) override;
