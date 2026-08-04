@@ -2,7 +2,7 @@
 
 TuileEmanation::TuileEmanation(int id, std::array<bool, 4> acces) : Tuile(id, EMANATION, acces, "#50FF3D") { }
 
-void TuileEmanation::effetTuile(std::array<Player*, 6> players) {
+void TuileEmanation::effetTuile(std::array<Player*, 6> players, int nbEboulement) {
   toxique = true;
   for (int i = 0; i < 6; i++) {
     if (players[i] != nullptr) {

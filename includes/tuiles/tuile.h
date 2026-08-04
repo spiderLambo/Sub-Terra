@@ -31,7 +31,7 @@ public:
   int getId();
 
   void rotation();
-  virtual void effetTuile(std::array<Player*, 6> players);
+  virtual void effetTuile(std::array<Player*, 6> players, int nbEboulement = -1);
   virtual void effetArriveeJoueur(Player* player);
   virtual void effetSortieJoueur(Player* player);
   virtual void effetActionJoueur(Player* player);
@@ -58,7 +58,7 @@ private:
   bool inondee = false;
 public:
   TuileInondable(int id, std::array<bool, 4> acces);
-  void effetTuile(std::array<Player*, 6> players) override;
+  void effetTuile(std::array<Player*, 6> players, int nbEboulement = -1) override;
 };
 
 class TuileEmanation : public Tuile {
@@ -67,7 +67,7 @@ private:
   bool gardeDuCorps = false;
 public:
   TuileEmanation(int id, std::array<bool, 4> acces);
-  void effetTuile(std::array<Player*, 6> players) override;
+  void effetTuile(std::array<Player*, 6> players, int nbEboulement = -1) override;
   void effetArriveeJoueur(Player* player) override;
   void effetSortieJoueur(Player* player) override;
 };
@@ -78,7 +78,7 @@ private:
   std::pair<int, int> numEboulement;
 public:
   TuileEffondrement(int id, std::array<bool, 4> acces, std::pair<int, int> numEboulement);
-  void effetTuile(std::array<Player*, 6> players) override;
+  void effetTuile(std::array<Player*, 6> players, int nbEboulement = -1) override;
   void effetActionJoueur(Player* player) override;
   bool getAcces(int direction, Player* player = nullptr) override;
 };
@@ -86,7 +86,7 @@ public:
 class TuileHorreur : public Tuile {
 public:
   TuileHorreur(int id, std::array<bool, 4> acces);
-  void effetTuile(std::array<Player*, 6> players) override;
+  void effetTuile(std::array<Player*, 6> players, int nbEboulement = -1) override;
 };
 
 class TuileRetrecissement : public Tuile {

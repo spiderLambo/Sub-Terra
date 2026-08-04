@@ -17,7 +17,7 @@ void Tuile::rotation() {
   acces[0] = temp;
 }
 
-void Tuile::effetTuile(std::array<Player*, 6> players) {
+void Tuile::effetTuile(std::array<Player*, 6> players, int nbEboulement) {
   return;
 }
 

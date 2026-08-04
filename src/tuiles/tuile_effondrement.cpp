@@ -4,8 +4,8 @@ TuileEffondrement::TuileEffondrement(int id, std::array<bool, 4> acces, std::pai
   this->numEboulement = numEboulement;
 }
 
-void TuileEffondrement::effetTuile(std::array<Player*, 6> players) {
-  // vérification RNG numEboulement
+void TuileEffondrement::effetTuile(std::array<Player*, 6> players, int nbEboulement) {
+  if (numEboulement.first != nbEboulement && numEboulement.second != nbEboulement) return;
   effondre = true;
   bool gardeDuCorps = false;
   for (int i = 0; i < 6; i++) {

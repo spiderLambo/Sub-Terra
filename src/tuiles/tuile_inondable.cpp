@@ -2,7 +2,7 @@
 
 TuileInondable::TuileInondable(int id, std::array<bool, 4> acces) : Tuile(id, INONDABLE, acces, "#5CD6D0") { }
 
-void TuileInondable::effetTuile(std::array<Player*, 6> players) {
+void TuileInondable::effetTuile(std::array<Player*, 6> players, int nbEboulement) {
   inondee = true;
   bool gardeDuCorps = false;
   for (int i = 0; i < 6; i++) {

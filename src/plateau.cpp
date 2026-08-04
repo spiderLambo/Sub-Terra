@@ -1,6 +1,7 @@
 #include "plateau.h"
 
-Plateau::Plateau() {
+Plateau::Plateau(std::array<Player*, 6> players) {
+  this->players = players;
   for (int i = 0; i < 128; i++) {
     for (int j = 0; j < 128; j++) {
       plateau[i][j] = nullptr;
@@ -29,6 +30,19 @@ std::vector<Tuile*> Plateau::getTuilesEffondrement() { return tuilesEffondrement
 
 std::pair<int, int> Plateau::getCoordonnees(int tuileId) {
   return std::make_pair(tuileId % 128, tuileId / 128);
+}
+
+std::array<Player*, 6> Plateau::getPlayersOnTuile(Tuile* tuile) {
+  std::array<Player*, 6> playersOnTuile;
+  for (int i = 0; i <  6; i++) playersOnTuile[i] = nullptr;
+  if (tuile == nullptr) return playersOnTuile;
+  int nbPlayers = 0;
+  for (int i = 0; i < 6; i++) {
+    if (players[i] != nullptr && players[i]->getTuileID() == tuile->getId()) {
+      playersOnTuile[nbPlayers++] = players[i];
+    }
+  }
+  return playersOnTuile;
 }
 
 void Plateau::placerTuile(enum TuileType type, std::array<bool, 4> acces, int x, int y, int dir, std::pair<int, int> nbEboulement) {
@@ -111,5 +125,45 @@ bool Plateau::mouvementValide(int x, int y, int direction, bool deplacement, Pla
 
   return tuileOrigine->getAcces(direction, player) && tuileDest->getAcces((direction + 2) % 4, player);
 }
+
+void Plateau::Horreur() {
+  Tuile* selection = nullptr;
+  // TODO: choisir tuile horreur la plus proche du joueur
+
+  if (selection != nullptr) {
+    std::array<Player*, 6> playersOnTuile = getPlayersOnTuile(selection);
+    selection->effetTuile(playersOnTuile);
+  }
+}
+
+void Plateau::Inondation() {
+  for (unsigned int i = 0; i < tuilesInondation.size(); i++) {
+    if (tuilesInondation[i] != nullptr) {
+      std::array<Player*, 6> playersOnTuile = getPlayersOnTuile(tuilesInondation[i]);
+      tuilesInondation[i]->effetTuile(playersOnTuile);
+    }
+  }
+}
+
+void Plateau::Emanation() {
+  for (unsigned int i = 0; i < tuilesEmanation.size(); i++) {
+    if (tuilesEmanation[i] != nullptr) {
+      std::array<Player*, 6> playersOnTuile = getPlayersOnTuile(tuilesEmanation[i]);
+      tuilesEmanation[i]->effetTuile(playersOnTuile);
+    }
+  }
+}
+
+void Plateau::Effondrement() {
+  // TODO: selection aléatoire
+  int nbEboulement = 1;
+  for (unsigned int i = 0; i < tuilesEffondrement.size(); i++) {
+    if (tuilesEffondrement[i] != nullptr) {
+      std::array<Player*, 6> playersOnTuile = getPlayersOnTuile(tuilesEffondrement[i]);
+      tuilesEffondrement[i]->effetTuile(playersOnTuile, nbEboulement);
+    }
+  }
+}
+
 
 void Plateau::affichePlateau() { } // TODO:
