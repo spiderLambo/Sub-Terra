@@ -1,3 +1,7 @@
 #include "main.h"
 
-int main() { return 0; }
+int main() {
+  render();
+
+  return 0;
+}

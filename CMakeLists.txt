@@ -21,6 +21,13 @@ add_executable(${PROJECT_NAME}.out
   src/tuiles/tuile_sortie.cpp
   src/tuiles/tuile_terrain_accidente.cpp
   src/plateau.cpp
+  src/display/render.cpp
 )
 
 target_include_directories(${PROJECT_NAME}.out PRIVATE includes)
+find_package(SFML 2.6 COMPONENTS graphics window system REQUIRED)
+target_link_libraries(${PROJECT_NAME}.out PRIVATE
+  sfml-graphics
+  sfml-window
+  sfml-system
+)
