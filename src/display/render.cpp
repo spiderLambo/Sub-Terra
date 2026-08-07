@@ -1,6 +1,7 @@
 #include "display/render.h"
 
 void render() {
+  // ---------- TESTS ----------
   Medecin m;
   Plongeur pl;
   Eclaireur e;
@@ -9,10 +10,11 @@ void render() {
   Grimpeur gr;
   std::array<Player*, 6> players = {&m, &pl, &e, &ge, &gdc, &gr};
   Plateau p(players);
-  p.placerTuile(EMANATION, {true, true, true, true}, 0, 0, 0);
-  p.placerTuile(SORTIE, {true, true, true, true}, 0, 1, 0);
-  p.placerTuile(TERRAIN_ACCIDENTE, {true, true, true, true}, 1, 1, 0);
-  p.placerTuile(HORREUR, {true, true, true, true}, 1, 2, 0);
+  p.placerTuile(EMANATION, {false, true, false, false}, 0, 0, 0);
+  p.placerTuile(SORTIE, {true, false, true, true}, 0, 1, 0);
+  p.placerTuile(TERRAIN_ACCIDENTE, {true, true, false, true}, 1, 1, 0);
+  p.placerTuile(DEPART, {false, false, true, true}, 5, 2, 0);
+  p.placerTuile(ORDINAIRE, {true, false, false, false}, 5, 5, 0);
 
   Tuile* t1 = p.getTuile(1, 1);
   if (t1 != nullptr) {
@@ -23,6 +25,8 @@ void render() {
     pl.setTuileID(t1->getId());
     e.setTuileID(t1->getId());
   }
+
+  // ---------------------------------------
   PlateauDisplay pd(&p);
 
   while (window.isOpen()) {
