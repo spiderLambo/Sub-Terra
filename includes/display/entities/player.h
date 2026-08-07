@@ -7,6 +7,6 @@ class PlayerDisplay : public Circle {
   Player* player;
 
  public:
-  PlayerDisplay(Player* player);
+  PlayerDisplay(Player* player, sf::Vector2f position);
   ~PlayerDisplay();
 };

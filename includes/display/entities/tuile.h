@@ -7,6 +7,6 @@ class TuileDisplay : public Rectangle {
   Tuile* tuile;
 
  public:
-  TuileDisplay(Tuile* tuile);
+  TuileDisplay(Tuile* tuile, sf::Vector2f position);
   ~TuileDisplay();
 };
