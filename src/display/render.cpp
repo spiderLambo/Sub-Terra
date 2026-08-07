@@ -1,12 +1,15 @@
 #include "display/render.h"
 
 void render() {
-  TuileDepart t(1);
-  float positionst = 10.0f;
-  float positionsp = 10.0f;
-  TuileDisplay dt(&t, sf::Vector2f(positionst, positionst));
-  GardeDuCorps p;
-  PlayerDisplay dp(&p, sf::Vector2f(positionsp, positionsp));
+  std::array<Player*, 6> players = {nullptr};
+  Plateau p(players);
+  p.placerTuile(EMANATION, {true, true, true, true}, 0, 0, 1);
+  p.placerTuile(SORTIE, {true, true, true, true}, 0, 1, 3);
+  p.placerTuile(TERRAIN_ACCIDENTE, {true, true, true, true}, 1, 1, 3);
+  p.placerTuile(HORREUR, {true, true, true, true}, 1, 2, 3);
+
+  PlateauDisplay pd(&p);
+
   while (window.isOpen()) {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -20,13 +23,7 @@ void render() {
 
     window.clear();
 
-    positionst += 0.5;
-    positionsp += 1;
-    dp.setPosition(sf::Vector2f(positionsp, positionsp));
-    dt.setPosition(sf::Vector2f(positionst, positionst));
-
-    dt.Display();
-    dp.Display();
+    pd.Display();
 
     window.display();
   }

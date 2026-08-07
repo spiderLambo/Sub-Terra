@@ -9,7 +9,7 @@ Rectangle::Rectangle(sf::Vector2f taille, sf::Vector2f position,
   setOutlineThickness(outlineSize);
   window = &::window;
 }
-Rectangle::~Rectangle() { delete window; }
+Rectangle::~Rectangle() {}
 
 void Rectangle::Display() { (*window).draw(*this); }
 
@@ -22,6 +22,6 @@ Circle::Circle(float taille, sf::Vector2f position, sf::Color couleur,
   setOutlineThickness(outlineSize);
   window = &::window;
 }
-Circle::~Circle() { delete window; }
+Circle::~Circle() {}
 
 void Circle::Display() { (*window).draw(*this); }

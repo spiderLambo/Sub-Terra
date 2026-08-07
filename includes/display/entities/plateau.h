@@ -1,3 +1,4 @@
+#include "../../plateau.h"
 #include "display/engine/geometry.h"
 #include "tuiles/tuile.h"
 #include "utils/Str_to_color.h"
@@ -9,4 +10,14 @@ class TuileDisplay : public Rectangle {
  public:
   TuileDisplay(Tuile* tuile, sf::Vector2f position);
   ~TuileDisplay();
+};
+
+class PlateauDisplay {
+ private:
+  Plateau* plateau;
+
+ public:
+  PlateauDisplay(Plateau* plateau);
+  ~PlateauDisplay();
+  void Display();
 };

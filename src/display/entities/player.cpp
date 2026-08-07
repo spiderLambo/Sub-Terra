@@ -5,4 +5,4 @@ PlayerDisplay::PlayerDisplay(Player* player, sf::Vector2f position)
              Str_to_color("#000000"), 5.0f) {
   this->player = player;
 }
-PlayerDisplay::~PlayerDisplay() { delete player; }
+PlayerDisplay::~PlayerDisplay() {}
