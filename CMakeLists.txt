@@ -22,6 +22,8 @@ add_executable(${PROJECT_NAME}.out
   src/tuiles/tuile_terrain_accidente.cpp
   src/plateau.cpp
   src/display/render.cpp
+  src/display/window.cpp
+  src/display/geometry.cpp
 )
 
 target_include_directories(${PROJECT_NAME}.out PRIVATE includes)

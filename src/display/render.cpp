@@ -1,16 +1,8 @@
 #include "display/render.h"
 
 void render() {
-  sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
-  sf::RenderWindow window(
-      sf::VideoMode(desktopMode.width, desktopMode.height - 40), "Sub Terra",
-      sf::Style::Titlebar | sf::Style::Close);
-
-  window.setSize(sf::Vector2u(desktopMode.width, desktopMode.height - 40));
-  window.setPosition(sf::Vector2i(0, 0));
-
-  window.setFramerateLimit(60);
-
+  Rectangle r(sf::Vector2f(100.0f, 100.0f), sf::Vector2f(50.0f, 50.0f),
+              sf::Color::Blue);
   while (window.isOpen()) {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -23,6 +15,7 @@ void render() {
     }
 
     window.clear();
+    r.Display();
     window.display();
   }
 }
