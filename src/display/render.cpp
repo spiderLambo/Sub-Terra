@@ -2,9 +2,9 @@
 
 void render() {
   TuileDepart t(1);
-  TuileDisplay d(&t);
-  Circle c(100.0f, sf::Vector2f(300.0f, 500.0f), sf::Color::Red,
-           sf::Color::Blue, 10.0f);
+  TuileDisplay dt(&t);
+  GardeDuCorps p;
+  PlayerDisplay dp(&p);
   while (window.isOpen()) {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -18,8 +18,8 @@ void render() {
 
     window.clear();
 
-    d.Display();
-    c.Display();
+    dt.Display();
+    dp.Display();
 
     window.display();
   }

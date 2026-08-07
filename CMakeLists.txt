@@ -25,6 +25,7 @@ add_executable(${PROJECT_NAME}.out
   src/display/engine/window.cpp
   src/display/engine/geometry.cpp
   src/display/entities/tuile.cpp
+  src/display/entities/player.cpp
 
   src/utils/Str_to_color.cpp
 )
