@@ -19,14 +19,8 @@ void PlateauDisplay::Display() {
       if (t != nullptr) {
         TuileDisplay td(t, sf::Vector2f(j * 102, i * 102));
         td.Display();
-        std::array<Player*, 6> players = plateau->getPlayersOnTuile(t);
-        for (int k = 0; k < 6; ++k) {
-          Player* p = players[k];
-          if (p != nullptr) {
-            PlayerDisplay pd(p, sf::Vector2f(i * 102, j * 102));
-            pd.Display();
-          }
-        }
+        PlayerList players = plateau->getPlayersOnTuile(t);
+        players.Display(j * 102, i * 102);
       }
     }
   }
