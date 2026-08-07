@@ -4,7 +4,7 @@ void render() {
   TuileDepart t(1);
   TuileDisplay d(&t);
   Circle c(100.0f, sf::Vector2f(300.0f, 500.0f), sf::Color::Red,
-           sf::Color::Blue);
+           sf::Color::Blue, 10.0f);
   while (window.isOpen()) {
     sf::Event event;
     while (window.pollEvent(event)) {
