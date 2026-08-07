@@ -1,8 +1,8 @@
 #include "display/render.h"
 
 void render() {
-  Rectangle r(sf::Vector2f(100.0f, 100.0f), sf::Vector2f(50.0f, 50.0f),
-              sf::Color::Blue);
+  TuileDepart t(1);
+  TuileDisplay d(&t);
   while (window.isOpen()) {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -15,7 +15,9 @@ void render() {
     }
 
     window.clear();
-    r.Display();
+
+    d.Display();
+
     window.display();
   }
 }

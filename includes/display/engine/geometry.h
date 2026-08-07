@@ -1,6 +1,7 @@
+#pragma once
 #include <SFML/Graphics.hpp>
 
-#include "display/window.h"
+#include "display/engine/window.h"
 
 class Rectangle : public sf::RectangleShape {
  private:
@@ -8,7 +9,8 @@ class Rectangle : public sf::RectangleShape {
 
  public:
   Rectangle(sf::Vector2f taille, sf::Vector2f position,
-            sf::Color couleur = sf::Color::Transparent);
+            sf::Color couleur = sf::Color::Transparent,
+            sf::Color outline = sf::Color::Transparent);
 
   ~Rectangle();
   void Display();

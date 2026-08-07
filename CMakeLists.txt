@@ -22,8 +22,11 @@ add_executable(${PROJECT_NAME}.out
   src/tuiles/tuile_terrain_accidente.cpp
   src/plateau.cpp
   src/display/render.cpp
-  src/display/window.cpp
-  src/display/geometry.cpp
+  src/display/engine/window.cpp
+  src/display/engine/geometry.cpp
+  src/display/entities/tuile.cpp
+
+  src/utils/Str_to_color.cpp
 )
 
 target_include_directories(${PROJECT_NAME}.out PRIVATE includes)

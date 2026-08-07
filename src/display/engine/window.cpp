@@ -1,4 +1,4 @@
-#include "display/window.h"
+#include "display/engine/window.h"
 
 Window::Window() {
   sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
