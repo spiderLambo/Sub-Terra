@@ -2,17 +2,17 @@
 
 Plateau::Plateau(std::array<Player*, 6> players) {
   this->players = players;
-  for (int i = 0; i < 128; i++) {
-    for (int j = 0; j < 128; j++) {
+  for (int i = 0; i < DIM; i++) {
+    for (int j = 0; j < DIM; j++) {
       plateau[i][j] = nullptr;
     }
   }
-  placerTuile(DEPART, {true, true, true, true}, 64, 64, 0);
+  placerTuile(DEPART, {true, true, true, true}, MID, MID, 0);
 }
 
 Plateau::~Plateau() {
-  for (int i = 0; i < 128; i++) {
-    for (int j = 0; j < 128; j++) {
+  for (int i = 0; i < DIM; i++) {
+    for (int j = 0; j < DIM; j++) {
       if (plateau[i][j] != nullptr) delete plateau[i][j];
     }
   }
@@ -29,7 +29,7 @@ std::vector<Tuile*> Plateau::getTuilesEmanation() { return tuilesEmanation; }
 std::vector<Tuile*> Plateau::getTuilesEffondrement() { return tuilesEffondrement; }
 
 std::pair<int, int> Plateau::getCoordonnees(int tuileId) {
-  return std::make_pair(tuileId % 128, tuileId / 128);
+  return std::make_pair(tuileId % DIM, tuileId / DIM);
 }
 
 std::array<Player*, 6> Plateau::getPlayersOnTuile(Tuile* tuile) {
@@ -47,7 +47,7 @@ std::array<Player*, 6> Plateau::getPlayersOnTuile(Tuile* tuile) {
 
 void Plateau::placerTuile(enum TuileType type, std::array<bool, 4> acces, int x, int y, int dir, std::pair<int, int> nbEboulement) {
   Tuile* tuile;
-  int id = x + 128 * y;
+  int id = x + DIM * y;
   switch (type) {
     case DEPART:
       tuile = new TuileDepart(id);
@@ -165,5 +165,19 @@ void Plateau::Effondrement() {
   }
 }
 
+std::pair<std::pair<int, int>, std::pair<int, int>> Plateau::getDimensions() {
+  int minX = MID, maxX = MID, minY = MID, maxY = MID;
+  for (int x = 0; x < DIM; x++) {
+    for (int y = 0; y < DIM; y++) {
+      if (plateau[y][x] != nullptr) {
+        if (x < minX) minX = x;
+        else if (x > maxX) maxX = x;
+        if (y < minY) minY = y;
+        else if (y > maxY) maxY = y;
+      }
+    }
+  }
+  return std::make_pair(std::make_pair(minX, minY), std::make_pair(maxX, maxY));
+}
 
 void Plateau::affichePlateau() { } // TODO:

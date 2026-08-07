@@ -6,7 +6,10 @@
 
 class Plateau {
 private:
-  std::array<std::array<Tuile*, 128>, 128> plateau;
+  const int DIM = 128;
+  const int MID = 64;
+
+  std::array<std::array<Tuile*, DIM>, DIM> plateau;
   std::array<Player*, 6> players;
   std::vector<Tuile*> tuilesHorreur;
   std::vector<Tuile*> tuilesInondation;
@@ -33,5 +36,6 @@ public:
   void Emanation();
   void Effondrement();
 
+  std::pair<std::pair<int, int>, std::pair<int, int>> getDimensions(); // rends coordonnees des coins haut gauche et bas droit
   void affichePlateau();
 };
