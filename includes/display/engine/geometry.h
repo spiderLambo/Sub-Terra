@@ -15,3 +15,16 @@ class Rectangle : public sf::RectangleShape {
   ~Rectangle();
   void Display();
 };
+
+class Circle : public sf::CircleShape {
+ private:
+  Window* window;
+
+ public:
+  Circle(float taille, sf::Vector2f position,
+         sf::Color couleur = sf::Color::Transparent,
+         sf::Color outline = sf::Color::Transparent);
+
+  ~Circle();
+  void Display();
+};
