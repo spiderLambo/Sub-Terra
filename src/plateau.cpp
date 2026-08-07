@@ -26,7 +26,9 @@ std::vector<Tuile*> Plateau::getTuilesInondation() { return tuilesInondation; }
 
 std::vector<Tuile*> Plateau::getTuilesEmanation() { return tuilesEmanation; }
 
-std::vector<Tuile*> Plateau::getTuilesEffondrement() { return tuilesEffondrement; }
+std::vector<Tuile*> Plateau::getTuilesEffondrement() {
+  return tuilesEffondrement;
+}
 
 std::pair<int, int> Plateau::getCoordonnees(int tuileId) {
   return std::make_pair(tuileId % DIM, tuileId / DIM);
@@ -34,7 +36,7 @@ std::pair<int, int> Plateau::getCoordonnees(int tuileId) {
 
 std::array<Player*, 6> Plateau::getPlayersOnTuile(Tuile* tuile) {
   std::array<Player*, 6> playersOnTuile;
-  for (int i = 0; i <  6; i++) playersOnTuile[i] = nullptr;
+  for (int i = 0; i < 6; i++) playersOnTuile[i] = nullptr;
   if (tuile == nullptr) return playersOnTuile;
   int nbPlayers = 0;
   for (int i = 0; i < 6; i++) {
@@ -45,7 +47,8 @@ std::array<Player*, 6> Plateau::getPlayersOnTuile(Tuile* tuile) {
   return playersOnTuile;
 }
 
-void Plateau::placerTuile(enum TuileType type, std::array<bool, 4> acces, int x, int y, int dir, std::pair<int, int> nbEboulement) {
+void Plateau::placerTuile(enum TuileType type, std::array<bool, 4> acces, int x,
+                          int y, int dir, std::pair<int, int> nbEboulement) {
   Tuile* tuile;
   int id = x + DIM * y;
   switch (type) {
@@ -93,7 +96,8 @@ void Plateau::placerTuile(enum TuileType type, std::array<bool, 4> acces, int x,
   plateau[y][x] = tuile;
 }
 
-bool Plateau::mouvementValide(int x, int y, int direction, bool deplacement, Player* player) {
+bool Plateau::mouvementValide(int x, int y, int direction, bool deplacement,
+                              Player* player) {
   int xDest = x;
   int yDest = y;
   switch (direction) {
@@ -123,7 +127,8 @@ bool Plateau::mouvementValide(int x, int y, int direction, bool deplacement, Pla
     return false;
   }
 
-  return tuileOrigine->getAcces(direction, player) && tuileDest->getAcces((direction + 2) % 4, player);
+  return tuileOrigine->getAcces(direction, player) &&
+         tuileDest->getAcces((direction + 2) % 4, player);
 }
 
 void Plateau::Horreur() {
@@ -139,7 +144,8 @@ void Plateau::Horreur() {
 void Plateau::Inondation() {
   for (unsigned int i = 0; i < tuilesInondation.size(); i++) {
     if (tuilesInondation[i] != nullptr) {
-      std::array<Player*, 6> playersOnTuile = getPlayersOnTuile(tuilesInondation[i]);
+      std::array<Player*, 6> playersOnTuile =
+          getPlayersOnTuile(tuilesInondation[i]);
       tuilesInondation[i]->effetTuile(playersOnTuile);
     }
   }
@@ -148,7 +154,8 @@ void Plateau::Inondation() {
 void Plateau::Emanation() {
   for (unsigned int i = 0; i < tuilesEmanation.size(); i++) {
     if (tuilesEmanation[i] != nullptr) {
-      std::array<Player*, 6> playersOnTuile = getPlayersOnTuile(tuilesEmanation[i]);
+      std::array<Player*, 6> playersOnTuile =
+          getPlayersOnTuile(tuilesEmanation[i]);
       tuilesEmanation[i]->effetTuile(playersOnTuile);
     }
   }
@@ -159,12 +166,14 @@ void Plateau::Effondrement() {
   int nbEboulement = 1;
   for (unsigned int i = 0; i < tuilesEffondrement.size(); i++) {
     if (tuilesEffondrement[i] != nullptr) {
-      std::array<Player*, 6> playersOnTuile = getPlayersOnTuile(tuilesEffondrement[i]);
+      std::array<Player*, 6> playersOnTuile =
+          getPlayersOnTuile(tuilesEffondrement[i]);
       tuilesEffondrement[i]->effetTuile(playersOnTuile, nbEboulement);
     }
   }
 }
 
+<<<<<<< HEAD
 std::pair<std::pair<int, int>, std::pair<int, int>> Plateau::getDimensions() {
   int minX = MID, maxX = MID, minY = MID, maxY = MID;
   for (int x = 0; x < DIM; x++) {
@@ -181,3 +190,6 @@ std::pair<std::pair<int, int>, std::pair<int, int>> Plateau::getDimensions() {
 }
 
 void Plateau::affichePlateau() { } // TODO:
+=======
+void Plateau::affichePlateau() {}  // TODO:
+>>>>>>> c74bf704120b6693a9b7f69080a46f696973b078

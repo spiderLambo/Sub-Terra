@@ -11,7 +11,6 @@ class Player {
   bool conscient;
   bool cache;
   int actions;
-
   int tuileID;
 
   virtual unsigned int maxPv() const { return 3; }
@@ -36,6 +35,7 @@ class Player {
   virtual void setCache();
 
   //   Actions
+  void setTuileID(int id);
   void resetActions();
   void ajouterActions(unsigned int nbActions);
   void utiliserActions(std::string action);

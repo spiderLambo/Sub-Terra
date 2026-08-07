@@ -1,8 +1,30 @@
 #include "display/render.h"
 
 void render() {
-  TuileDepart t(1);
-  TuileDisplay d(&t);
+  Medecin m;
+  Plongeur pl;
+  Eclaireur e;
+  Geologue ge;
+  GardeDuCorps gdc;
+  Grimpeur gr;
+  std::array<Player*, 6> players = {&m, &pl, &e, &ge, &gdc, &gr};
+  Plateau p(players);
+  p.placerTuile(EMANATION, {true, true, true, true}, 0, 0, 0);
+  p.placerTuile(SORTIE, {true, true, true, true}, 0, 1, 0);
+  p.placerTuile(TERRAIN_ACCIDENTE, {true, true, true, true}, 1, 1, 0);
+  p.placerTuile(HORREUR, {true, true, true, true}, 1, 2, 0);
+
+  Tuile* t1 = p.getTuile(1, 1);
+  if (t1 != nullptr) {
+    m.setTuileID(t1->getId());
+    ge.setTuileID(t1->getId());
+    gr.setTuileID(t1->getId());
+    gdc.setTuileID(t1->getId());
+    pl.setTuileID(t1->getId());
+    e.setTuileID(t1->getId());
+  }
+  PlateauDisplay pd(&p);
+
   while (window.isOpen()) {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -16,7 +38,7 @@ void render() {
 
     window.clear();
 
-    d.Display();
+    pd.Display();
 
     window.display();
   }
