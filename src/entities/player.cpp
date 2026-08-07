@@ -36,6 +36,7 @@ void Player::recupererPv() {
 }
 void Player::setConscient() { this->conscient = !this->conscient; }
 void Player::setCache() { this->cache = !this->cache; }
+void Player::setTuileID(int id) { this->tuileID = id; }
 
 //   Actions
 

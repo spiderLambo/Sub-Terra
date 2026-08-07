@@ -1,5 +1,6 @@
 #include "../../plateau.h"
 #include "display/engine/geometry.h"
+#include "display/entities/player.h"
 #include "tuiles/tuile.h"
 #include "utils/Str_to_color.h"
 
