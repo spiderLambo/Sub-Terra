@@ -6,6 +6,11 @@ class Scene {
 
   virtual void afficher();
 
+ protected:
+  sf::Event event;
+
+  virtual void events();
+
  public:
   Scene();
   virtual ~Scene() = 0;

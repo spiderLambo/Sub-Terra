@@ -7,6 +7,7 @@ class Game : public Scene {
   PlateauDisplay plateau;
 
   void afficher() override;
+  void events() override;
 
  public:
   Game();

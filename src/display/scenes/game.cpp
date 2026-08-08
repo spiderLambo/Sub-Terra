@@ -6,3 +6,4 @@ Game::Game() : plateauData({nullptr}), plateau(&plateauData) {
 Game::~Game() {}
 
 void Game::afficher() { plateau.Display(100, 100); }
+void Game::events() { Scene::events(); }
