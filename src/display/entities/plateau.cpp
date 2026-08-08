@@ -43,8 +43,8 @@ PlateauDisplay::~PlateauDisplay() {}
 void PlateauDisplay::Display() {
   std::pair<std::pair<int, int>, std::pair<int, int>> dim =
       plateau->getDimensions();
-  for (int i = dim.first.first; i < dim.second.first; ++i) {
-    for (int j = dim.first.second; j < dim.second.first; ++j) {
+  for (int i = dim.first.first; i <= dim.second.first; ++i) {
+    for (int j = dim.first.second; j <= dim.second.first; ++j) {
       Tuile* t = plateau->getTuile(i, j);
 
       std::pair<unsigned int, unsigned int> coordones(
