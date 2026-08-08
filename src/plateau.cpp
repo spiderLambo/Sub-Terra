@@ -173,20 +173,21 @@ void Plateau::Effondrement() {
   }
 }
 
-<<<<<<< HEAD
 std::pair<std::pair<int, int>, std::pair<int, int>> Plateau::getDimensions() {
   int minX = MID, maxX = MID, minY = MID, maxY = MID;
   for (int x = 0; x < DIM; x++) {
     for (int y = 0; y < DIM; y++) {
       if (plateau[y][x] != nullptr) {
-        if (x < minX) minX = x;
-        else if (x > maxX) maxX = x;
-        if (y < minY) minY = y;
-        else if (y > maxY) maxY = y;
+        if (x < minX)
+          minX = x;
+        else if (x > maxX)
+          maxX = x;
+        if (y < minY)
+          minY = y;
+        else if (y > maxY)
+          maxY = y;
       }
     }
   }
   return std::make_pair(std::make_pair(minX, minY), std::make_pair(maxX, maxY));
 }
-
->>>>>>> c74bf704120b6693a9b7f69080a46f696973b078
