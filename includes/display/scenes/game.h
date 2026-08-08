@@ -9,6 +9,8 @@ class Game : public Scene {
   void afficher() override;
   void events() override;
 
+  void dessinerContours();
+
  public:
   Game();
   ~Game();

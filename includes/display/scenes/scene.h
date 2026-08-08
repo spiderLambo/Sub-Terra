@@ -9,6 +9,9 @@ class Scene {
  protected:
   sf::Event event;
 
+  const int windowWidth = window->Width();
+  const int windowHeight = window->Height();
+
   virtual void events();
 
  public:

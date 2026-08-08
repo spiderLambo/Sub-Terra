@@ -1,6 +1,6 @@
 #include "display/scenes/scene.h"
 
-Scene::Scene() { window = &::window; }
+Scene::Scene() : window(&::window) {}
 Scene::~Scene() {}
 void Scene::afficher() {}
 
