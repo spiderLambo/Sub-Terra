@@ -11,6 +11,7 @@ class TuileDisplay : public Rectangle {
  public:
   TuileDisplay(Tuile* tuile, sf::Vector2f position);
   ~TuileDisplay();
+  void Display();
 };
 
 class PlateauDisplay {

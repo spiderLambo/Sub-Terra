@@ -4,10 +4,39 @@
 
 TuileDisplay::TuileDisplay(Tuile* tuile, sf::Vector2f position)
     : Rectangle(sf::Vector2f(100.0f, 100.0f), position,
-                Str_to_color(tuile->couleur), Str_to_color("#FFFFFF"), 2.0f) {
+                Str_to_color(tuile->couleur)) {
   this->tuile = tuile;
 }
 TuileDisplay::~TuileDisplay() {}
+void TuileDisplay::Display() {
+  std::array<unsigned int, 4> acces;
+  for (int i = 0; i < 4; ++i) {
+    acces[i] = !this->tuile->getAcces(i) ? 1 : 0;
+  }
+
+  Rectangle r1(
+      sf::Vector2f(25.0f + 75 * acces[0], 25.0f),
+      sf::Vector2f(this->getPosition().x - 2, this->getPosition().y - 2),
+      Str_to_color("#FFFFFF"));
+  Rectangle r2(
+      sf::Vector2f(25.0f, 25.0f + 75 * acces[1]),
+      sf::Vector2f(this->getPosition().x + 77, this->getPosition().y - 2),
+      Str_to_color("#FFFFFF"));
+  Rectangle r3(sf::Vector2f(25.0f + 75 * acces[1], 25.0f),
+               sf::Vector2f(this->getPosition().x + 77 - 75 * acces[1],
+                            this->getPosition().y + 77),
+               Str_to_color("#FFFFFF"));
+  Rectangle r4(sf::Vector2f(25.0f, 25.0f + 75 * acces[1]),
+               sf::Vector2f(this->getPosition().x - 2,
+                            this->getPosition().y + 77 - 75 * acces[1]),
+               Str_to_color("#FFFFFF"));
+
+  r1.Display();
+  r2.Display();
+  r3.Display();
+  r4.Display();
+  Rectangle::Display();
+}
 
 PlateauDisplay::PlateauDisplay(Plateau* plateau) { this->plateau = plateau; }
 PlateauDisplay::~PlateauDisplay() {}
