@@ -40,7 +40,7 @@ void TuileDisplay::Display() {
 
 PlateauDisplay::PlateauDisplay(Plateau* plateau) { this->plateau = plateau; }
 PlateauDisplay::~PlateauDisplay() {}
-void PlateauDisplay::Display() {
+void PlateauDisplay::Display(int x, int y) {
   std::pair<std::pair<int, int>, std::pair<int, int>> dim =
       plateau->getDimensions();
   for (int i = dim.first.first; i <= dim.second.first; ++i) {
@@ -48,7 +48,7 @@ void PlateauDisplay::Display() {
       Tuile* t = plateau->getTuile(i, j);
 
       std::pair<unsigned int, unsigned int> coordones(
-          (j - dim.first.second) * 102, (i - dim.first.first) * 102);
+          (j - dim.first.second) * 102 + x, (i - dim.first.first) * 102 + y);
       if (t != nullptr) {
         TuileDisplay td(t, sf::Vector2f(coordones.first, coordones.second));
         td.Display();
