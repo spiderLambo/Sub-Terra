@@ -189,5 +189,6 @@ std::pair<std::pair<int, int>, std::pair<int, int>> Plateau::getDimensions() {
       }
     }
   }
-  return std::make_pair(std::make_pair(minX, minY), std::make_pair(maxX, maxY));
+  return std::make_pair(std::make_pair(minX, minY),
+                        std::make_pair(maxX + 1, maxY + 1));
 }

@@ -41,15 +41,19 @@ void TuileDisplay::Display() {
 PlateauDisplay::PlateauDisplay(Plateau* plateau) { this->plateau = plateau; }
 PlateauDisplay::~PlateauDisplay() {}
 void PlateauDisplay::Display() {
-  for (int i = 0; i < 128; ++i) {
-    for (int j = 0; j < 128; ++j) {
+  std::pair<std::pair<int, int>, std::pair<int, int>> dim =
+      plateau->getDimensions();
+  for (int i = dim.first.first; i < dim.second.first; ++i) {
+    for (int j = dim.first.second; j < dim.second.first; ++j) {
       Tuile* t = plateau->getTuile(i, j);
 
+      std::pair<unsigned int, unsigned int> coordones(
+          (j - dim.first.second) * 102, (i - dim.first.first) * 102);
       if (t != nullptr) {
-        TuileDisplay td(t, sf::Vector2f(j * 102, i * 102));
+        TuileDisplay td(t, sf::Vector2f(coordones.first, coordones.second));
         td.Display();
         PlayerList players = plateau->getPlayersOnTuile(t);
-        players.Display(j * 102, i * 102);
+        players.Display(coordones.first, coordones.second);
       }
     }
   }
