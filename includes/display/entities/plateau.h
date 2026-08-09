@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "../../plateau.h"
 #include "display/engine/geometry.h"
 #include "display/entities/player.h"
@@ -7,9 +9,10 @@
 class TuileDisplay : public Rectangle {
  private:
   Tuile* tuile;
+  int size;
 
  public:
-  TuileDisplay(Tuile* tuile, sf::Vector2f position);
+  TuileDisplay(Tuile* tuile, sf::Vector2f position, int size);
   ~TuileDisplay();
   void Display();
 };

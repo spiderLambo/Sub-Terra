@@ -4,7 +4,7 @@
 #include "display/engine/window.h"
 
 class Rectangle : public sf::RectangleShape {
- private:
+ protected:
   Window* window;
 
  public:
@@ -18,7 +18,7 @@ class Rectangle : public sf::RectangleShape {
 };
 
 class Circle : public sf::CircleShape {
- private:
+ protected:
   Window* window;
 
  public:

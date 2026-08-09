@@ -2,12 +2,18 @@
 
 Game::Game() : plateauData({nullptr}), plateau(&plateauData) {
   plateauData.placerTuile(EMANATION, {true, true, true, true}, 66, 66, 0);
+  plateauData.placerTuile(EMANATION, {true, true, true, true}, 69, 66, 0);
+  plateauData.placerTuile(EMANATION, {true, true, false, true}, 70, 66, 0);
+  plateauData.placerTuile(EMANATION, {true, true, true, true}, 70, 70, 0);
+  plateauData.placerTuile(EMANATION, {true, false, false, true}, 70, 74, 0);
+  plateauData.placerTuile(EMANATION, {false, true, true, false}, 73, 74, 0);
+  plateauData.placerTuile(EMANATION, {true, true, true, true}, 74, 74, 0);
 }
 Game::~Game() {}
 
 void Game::afficher() {
   dessinerContours();
-  // plateau.Display(0.5 * windowWidth, 100);
+  plateau.Display(13.0f, 13.0f);
 }
 void Game::events() { Scene::events(); }
 
