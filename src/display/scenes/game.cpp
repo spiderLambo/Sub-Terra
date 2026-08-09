@@ -1,7 +1,10 @@
 #include "display/scenes/game.h"
 
 Game::Game()
-    : plateauData({nullptr}), plateau(&plateauData), coordonesPlateau(13, 13) {
+    : plateauData({nullptr}),
+      plateau(&plateauData),
+      coordonesPlateau(13, 13),
+      click(false) {
   plateauData.placerTuile(EMANATION, {true, true, true, true}, 66, 66, 0);
   plateauData.placerTuile(EMANATION, {true, true, true, true}, 69, 66, 0);
   plateauData.placerTuile(EMANATION, {true, true, false, true}, 70, 66, 0);
@@ -24,11 +27,43 @@ void Game::afficher() {
 }
 void Game::events() {
   Scene::events();
+
   if (event.type == sf::Event::KeyPressed) {
     if (event.key.code == sf::Keyboard::Left) coordonesPlateau.first -= 10;
     if (event.key.code == sf::Keyboard::Right) coordonesPlateau.first += 10;
     if (event.key.code == sf::Keyboard::Up) coordonesPlateau.second -= 10;
     if (event.key.code == sf::Keyboard::Down) coordonesPlateau.second += 10;
+  }
+
+  if (event.type == sf::Event::MouseButtonPressed) {
+    if (event.mouseButton.button == sf::Mouse::Left and
+        (15 < event.mouseButton.x and
+         0.7f * windowWidth > event.mouseButton.x) and
+        (15 < event.mouseButton.y and
+         windowHeight - 50.0f > event.mouseButton.y)) {
+      coordonnesClick.first = event.mouseButton.x;
+      coordonnesClick.second = event.mouseButton.y;
+      click = true;
+    }
+  }
+
+  if (event.type == sf::Event::MouseMoved) {
+    if (click) {
+      int deltaX = event.mouseMove.x - coordonnesClick.first;
+      int deltaY = event.mouseMove.y - coordonnesClick.second;
+
+      coordonesPlateau.first += deltaX;
+      coordonesPlateau.second += deltaY;
+
+      coordonnesClick.first = event.mouseMove.x;
+      coordonnesClick.second = event.mouseMove.y;
+    }
+  }
+
+  if (event.type == sf::Event::MouseButtonReleased) {
+    if (event.mouseButton.button == sf::Mouse::Left) {
+      click = false;
+    }
   }
 }
 

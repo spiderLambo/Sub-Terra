@@ -8,6 +8,9 @@ class Game : public Scene {
 
   std::pair<int, int> coordonesPlateau;
 
+  bool click;
+  std::pair<int, int> coordonnesClick;
+
   void VuePlateau();
 
   void afficher() override;
