@@ -9,6 +9,7 @@ Before starting, make sure you have installed the core tools on your machine:
 - **Git**: to clone the project sources.
 - **A C/C++ compiler** (`gcc`/`g++` on Linux, `Clang` / `Xcode Tools` on macOS).
 - **CMake** (version 3.10 or higher recommended).
+- **SFML** (version 2.6).
 
 ## Step-by-Step Installation
 
@@ -19,7 +20,7 @@ Before starting, make sure you have installed the core tools on your machine:
 
 ```bash
 sudo apt update
-sudo apt install build-essential cmake git
+sudo apt install build-essential cmake git libsfml-dev
 ```
 
 ### 2. Clone the repository
@@ -51,7 +52,7 @@ chmod +x newbuild.sh
 
 ```bash
 xcode-select --install
-brew install cmake git
+brew install cmake git sfml
 ```
 
 ### 2. Clone the repository

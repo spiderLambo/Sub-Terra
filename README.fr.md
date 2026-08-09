@@ -11,7 +11,7 @@ L'objectif est ici d'adapter le jeu de société [Sub Terra](https://www.nutspub
 
   ```bash
   sudo apt update
-  sudo apt install build-essential cmake
+  sudo apt install build-essential cmake libsfml-dev
   git clone https://github.com/spiderLambo/Sub-Terra.git
   cd Sub-Terra
   ./newbuild.sh
@@ -25,7 +25,7 @@ L'objectif est ici d'adapter le jeu de société [Sub Terra](https://www.nutspub
 
   ```bash
   xcode-select --install
-  brew install cmake
+  brew install cmake sfml
   git clone https://github.com/spiderLambo/Sub-Terra.git
   cd Sub-Terra
   chmod +x newbuild.sh
