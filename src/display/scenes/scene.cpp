@@ -5,19 +5,33 @@ Scene::~Scene() {}
 void Scene::afficher() {}
 
 void Scene::events() {
-  while (window->pollEvent(event)) {
-    if (event.type == sf::Event::Closed) {
-      window->close();
-    }
-    if (event.type == sf::Event::GainedFocus) {
-      window->setPosition(sf::Vector2i(0, 0));
-    }
+  if (event.type == sf::Event::Closed) {
+    window->close();
   }
+  if (event.type == sf::Event::GainedFocus) {
+    window->setPosition(sf::Vector2i(0, 0));
+  }
+}
+
+void Scene::view(std::pair<float, float> size, std::pair<float, float> position,
+                 std::function<void()> display) {
+  sf::View vue(sf::FloatRect(0.0f, 0.0f, size.first, size.second));
+
+  vue.setViewport(sf::FloatRect(
+      position.first / windowWidth, position.second / windowHeight,
+      size.first / windowWidth, size.second / windowHeight));
+
+  window->setView(vue);
+  display();
+
+  window->setView(window->getDefaultView());
 }
 
 void Scene::Display() {
   while (window->isOpen()) {
-    events();
+    while (window->pollEvent(event)) {
+      events();
+    }
 
     window->clear();
 

@@ -1,3 +1,5 @@
+#include <functional>
+
 #include "display/engine/window.h"
 
 class Scene {
@@ -13,6 +15,9 @@ class Scene {
   const int windowHeight = window->Height();
 
   virtual void events();
+
+  void view(std::pair<float, float> size, std::pair<float, float> position,
+            std::function<void()> display);
 
  public:
   Scene();

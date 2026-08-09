@@ -1,6 +1,7 @@
 #include "display/scenes/game.h"
 
-Game::Game() : plateauData({nullptr}), plateau(&plateauData) {
+Game::Game()
+    : plateauData({nullptr}), plateau(&plateauData), coordonesPlateau(13, 13) {
   plateauData.placerTuile(EMANATION, {true, true, true, true}, 66, 66, 0);
   plateauData.placerTuile(EMANATION, {true, true, true, true}, 69, 66, 0);
   plateauData.placerTuile(EMANATION, {true, true, false, true}, 70, 66, 0);
@@ -11,11 +12,25 @@ Game::Game() : plateauData({nullptr}), plateau(&plateauData) {
 }
 Game::~Game() {}
 
-void Game::afficher() {
-  dessinerContours();
-  plateau.Display(13.0f, 13.0f);
+void Game::VuePlateau() {
+  view({0.7f * windowWidth, windowHeight - 50.0f}, {10.0f, 10.0f}, [this]() {
+    plateau.Display(coordonesPlateau.first, coordonesPlateau.second);
+  });
 }
-void Game::events() { Scene::events(); }
+
+void Game::afficher() {
+  VuePlateau();
+  dessinerContours();
+}
+void Game::events() {
+  Scene::events();
+  if (event.type == sf::Event::KeyPressed) {
+    if (event.key.code == sf::Keyboard::Left) coordonesPlateau.first -= 10;
+    if (event.key.code == sf::Keyboard::Right) coordonesPlateau.first += 10;
+    if (event.key.code == sf::Keyboard::Up) coordonesPlateau.second -= 10;
+    if (event.key.code == sf::Keyboard::Down) coordonesPlateau.second += 10;
+  }
+}
 
 void Game::dessinerContours() {
   float leftX = 0.3f * windowWidth - 50;
