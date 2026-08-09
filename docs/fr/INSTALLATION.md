@@ -9,6 +9,7 @@ Avant de commencer, assurez-vous d'avoir installé les outils fondamentaux sur v
 - **Git** : pour récupérer les sources du projet.
 - **Un compilateur C/C++** (`gcc`/`g++` sous Linux, `Clang` / `Xcode Tools` sous macOS).
 - **CMake** (version 3.10 ou supérieure recommandée).
+- **SFML** (version 2.6).
 
 ## Installation pas-à-pas
 
@@ -19,7 +20,7 @@ Avant de commencer, assurez-vous d'avoir installé les outils fondamentaux sur v
 
 ```bash
 sudo apt update
-sudo apt install build-essential cmake git
+sudo apt install build-essential cmake git libsfml-dev
 ```
 
 ### 2. Cloner le dépôt
@@ -51,7 +52,7 @@ chmod +x newbuild.sh
 
 ```bash
 xcode-select --install
-brew install cmake git
+brew install cmake git sfml
 ```
 
 ### 2. Cloner le dépôt

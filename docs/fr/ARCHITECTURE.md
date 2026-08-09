@@ -6,19 +6,70 @@ Lire en: [English](../en/ARCHITECTURE.md) | [Français](ARCHITECTURE.md)
 
 ```
 Sub-Terra
+├─ CHANGELOG.md
 ├─ CMakeLists.txt
+├─ README.fr.md
 ├─ README.md
 ├─ docs
-│  └─ ARCHITECTURE.md
+│  ├─ en
+│  │  ├─ ARCHITECTURE.md
+│  │  ├─ DEVELOPEMENT.md
+│  │  └─ INSTALLATION.md
+│  └─ fr
+│     ├─ ARCHITECTURE.md
+│     ├─ DEVELOPPEMENT.md
+│     └─ INSTALLATION.md
 ├─ includes
+│  ├─ display
+│  │  ├─ engine
+│  │  │  ├─ geometry.h
+│  │  │  └─ window.h
+│  │  ├─ entities
+│  │  │  ├─ plateau.h
+│  │  │  └─ player.h
+│  │  ├─ render.h
+│  │  └─ scenes
+│  │     ├─ game.h
+│  │     └─ scene.h
 │  ├─ entities
 │  │  └─ player.h
-│  └─ main.h
+│  ├─ main.h
+│  ├─ plateau.h
+│  ├─ tuiles
+│  │  └─ tuile.h
+│  └─ utils
+│     └─ Str_to_color.h
 ├─ newbuild.sh
 └─ src
+   ├─ display
+   │  ├─ engine
+   │  │  ├─ geometry.cpp
+   │  │  └─ window.cpp
+   │  ├─ entities
+   │  │  ├─ plateau.cpp
+   │  │  └─ player.cpp
+   │  ├─ render.cpp
+   │  └─ scenes
+   │     ├─ game.cpp
+   │     └─ scene.cpp
    ├─ entities
    │  └─ player.cpp
-   └─ main.cpp
+   ├─ main.cpp
+   ├─ plateau.cpp
+   ├─ tuiles
+   │  ├─ tuile.cpp
+   │  ├─ tuile_corde.cpp
+   │  ├─ tuile_depart.cpp
+   │  ├─ tuile_effondrement.cpp
+   │  ├─ tuile_emanation.cpp
+   │  ├─ tuile_horreur.cpp
+   │  ├─ tuile_inondable.cpp
+   │  ├─ tuile_ordinaire.cpp
+   │  ├─ tuile_retrecissement.cpp
+   │  ├─ tuile_sortie.cpp
+   │  └─ tuile_terrain_accidente.cpp
+   └─ utils
+      └─ Str_to_color.cpp
 
 ```
 
@@ -37,8 +88,8 @@ Pour maintenir une base de code propre, modulaire et facile à maintenir, le pro
 | `main.cpp`               | Instancier et démarrer l'application |
 | [`entities/`](#entities) | Modéliser les données                |
 | [`core/`]()              | Gérer la logique du jeu              |
-| [`display/`]()           | Gérer l'affichage                    |
-| [`utils/`]()             | Gérer les événements globaux         |
+| [`display/`](#display)   | Gérer l'affichage                    |
+| [`utils/`](#utils)       | Gérer les événements globaux         |
 
 ### entities/
 
@@ -115,5 +166,226 @@ Pour maintenir une base de code propre, modulaire et facile à maintenir, le pro
   ## Chef
 
   Hérite de [Player](#player), a pour rang `8` et pour couleur `#002200`<span style="color:#002200;">■</span>.
+
+  </details>
+
+### display/
+
+- <details>
+  <summary><code>engine/</code></summary>
+
+  Ce dossier a pour but de s'occuper de tout ce qui va être relatif à l'affichage.
+  - <details>
+    <summary><code>window.cpp</code></summary>
+
+    # Window
+
+    Cette classe a pour but de représenter la fenêtre courante.
+
+    ## Attributs
+
+    | `nom`  | `visibilité` | `utilité`                        |
+    | ------ | ------------ | -------------------------------- |
+    | height | private      | Obtenir la hauteur de la fenêtre |
+    | width  | private      | Obtenir la largeur de la fenêtre |
+
+    ## Getters
+
+    | `nom`  | `visibilité` |
+    | ------ | ------------ |
+    | Height | public       |
+    | Width  | public       |
+
+    </details>
+
+  - <details>
+    <summary><code>geometry.cpp</code></summary>
+
+    Ce fichier sert à simplifier l'utilisation des formes.
+
+    # Rectangle (Hérite de sf::RectangleShape)
+
+    Cette classe représente un rectangle.
+
+    ## Attributs
+
+    | `nom`  | `visibilité` | `utilité`                                                |
+    | ------ | ------------ | -------------------------------------------------------- |
+    | window | protected    | Faire référence à la fenêtre sur laquelle il est affiché |
+
+    ## Méthodes
+
+    | `nom`   | `visibilité` | `utilité`             |
+    | ------- | ------------ | --------------------- |
+    | Display | public       | Afficher le rectangle |
+
+    # Circle (Hérite de sf::CircleShape)
+
+    Cette classe représente un cercle.
+
+    ## Attributs
+
+    | `nom`  | `visibilité` | `utilité`                                                |
+    | ------ | ------------ | -------------------------------------------------------- |
+    | window | protected    | Faire référence à la fenêtre sur laquelle il est affiché |
+
+    ## Méthodes
+
+    | `nom`   | `visibilité` | `utilité`          |
+    | ------- | ------------ | ------------------ |
+    | Display | public       | Afficher le cercle |
+
+    </details>
+
+  </details>
+
+- <details>
+  <summary><code>entities/</code></summary>
+
+  Ce dossier a pour but de s'occuper des représentations des éléments correspondants à la du jeu.
+  - <details>
+    <summary><code>player.cpp</code></summary>
+
+    Ce fichier sert à représenter les joueurs.
+
+    # PlayerDisplay (Hérite de Circle)
+
+    Cette classe représente un joueur.
+
+    ## Attributs
+
+    | `nom`  | `visibilité` | `utilité`                 |
+    | ------ | ------------ | ------------------------- |
+    | player | private      | Faire référence au joueur |
+
+    # PlayerList (Hérite de std::array<Player\*,6>)
+
+    Cette classe représente une liste de joueurs.
+
+    ## Méthodes
+
+    | `nom`            | `visibilité` | `utilité`                                                                        |
+    | ---------------- | ------------ | -------------------------------------------------------------------------------- |
+    | Display(`x`,`y`) | public       | Affiche la liste de joueurs en fonction de leur nombre aux coordonnées (`x`,`y`) |
+
+    </details>
+
+  - <details>
+      <summary><code>plateau.cpp</code></summary>
+
+    Ce fichier sert à représenter tout ce qui est relatif au plateau.
+
+    # TuileDisplay (Hérite de Rectangle)
+
+    Sert à représenter une tuile.
+
+    ## Attributs
+
+    | `nom` | `visibilité` | `utilité`                                                 |
+    | ----- | ------------ | --------------------------------------------------------- |
+    | tuile | private      | Faire référence à la tuile                                |
+    | size  | private      | Indiquer la largeur du rectangle correspondant à la tuile |
+
+    ## Méthodes
+
+    | `nom`   | `visibilité` | `utilité`                                     |
+    | ------- | ------------ | --------------------------------------------- |
+    | Display | public       | Faire du polymorphisme en affichant les coins |
+
+    # PlateauDisplay
+
+    Sert à représenter un plateau.
+
+    ## Attributs
+
+    | `nom`   | `visibilité` | `utilité`                    |
+    | ------- | ------------ | ---------------------------- |
+    | plateau | private      | Faire référence à un plateau |
+
+    ## Méthodes
+
+    | `nom`            | `visibilité` | `utilité`                                    |
+    | ---------------- | ------------ | -------------------------------------------- |
+    | Display(`x`,`y`) | public       | Affiche le plateau aux coordonnées (`x`,`y`) |
+
+    </details>
+
+  </details>
+
+  </details>
+
+- <details>
+  <summary><code>scene/</code></summary>
+
+  Ce dossier sert à représenter une scène.
+  - <details>
+    <summary><code>scene.cpp</code></summary>
+
+    # Scene
+
+    Cette classe sert à afficher une scène
+
+    ## Attributs
+
+    | `nom`        | `visibilité` | `utilité`                                                   |
+    | ------------ | ------------ | ----------------------------------------------------------- |
+    | window       | private      | Fait référence à la fenêtre sur laquelle la scène s'affiche |
+    | event        | protected    | Correspond aux événements de la fenêtre                     |
+    | windowWidth  | protected    | Correspond à la largeur de la fenêtre                       |
+    | windowHeight | protected    | Correspond à la hauteur de la fenêtre                       |
+
+    ## Méthodes
+
+    | `nom`                | `visibilité` | `utilité`                                   |
+    | -------------------- | ------------ | ------------------------------------------- |
+    | afficher (abstraite) | private      | Correspond aux éléments qui seront affichés |
+    | events (abstraite)   | protected    | Correspond aux événements de la scène       |
+    | Display              | public       | Affiche et gère les événements de la scène  |
+
+    </details>
+
+  - <details>
+    <summary><code>Game.cpp</code></summary>
+
+    Sert à gérer la scène de jeu principale.
+
+    # Game (Hérite de Scene)
+
+    Cette classe sert à représenter la scène de jeu principale.
+
+    ## Attributs
+
+    | `nom`       | `visibilité` | `utilité`                                             |
+    | ----------- | ------------ | ----------------------------------------------------- |
+    | plateauData | private      | Correspond au plateau du jeu représenté               |
+    | plateau     | private      | Correspond à l'affichage du plateau du jeu représenté |
+
+    ## Méthodes
+
+    | `nom`            | `visibilité` | `utilité`                                        |
+    | ---------------- | ------------ | ------------------------------------------------ |
+    | dessinerContours | private      | Dessine les contours de tous les éléments de jeu |
+
+    </details>
+
+  </details>
+
+- <details>
+  <summary><code>render.cpp</code></summary>
+
+  Ce fichier sert à gérer l'affichage des scènes.
+
+  # render()
+
+  Cette procédure sert à gérer l'affichage des scènes.
+
+  </details>
+
+### utils/
+
+- <details>
+  <summary><code>Str_to_color.cpp</code></summary>
+
+  Ce fichier contient la fonction `Str_to_color(hex)` qui convertit la chaîne de caractères hex représentant une couleur en hexadécimal (ex: `#FFFFFF`, `#000000`) en une couleur utilisable par SFML.
 
   </details>
