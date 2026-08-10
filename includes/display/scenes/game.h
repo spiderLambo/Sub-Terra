@@ -6,6 +6,7 @@
 
 class Game : public Scene {
  private:
+  PlayerList players;
   Plateau plateauData;
   PlateauDisplay plateau;
 
@@ -23,6 +24,6 @@ class Game : public Scene {
   void dessinerContours();
 
  public:
-  Game();
+  Game(PlayerList players = {});
   ~Game();
 };

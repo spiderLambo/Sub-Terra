@@ -67,7 +67,7 @@ void PlateauDisplay::Display(int x, int y, int& tuileSize) {
                         tuileSize);
         td.Display();
         PlayerList players = plateau->getPlayersOnTuile(t);
-        players.Display(coordones.first, coordones.second);
+        players.Display(coordones.first, coordones.second, tuileSize);
       }
     }
   }

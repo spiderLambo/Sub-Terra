@@ -10,7 +10,7 @@ class PlayerDisplay : public Circle {
   Player* player;
 
  public:
-  PlayerDisplay(Player* player, sf::Vector2f position);
+  PlayerDisplay(Player* player, sf::Vector2f position, int tuileSize);
   ~PlayerDisplay();
 };
 
@@ -21,5 +21,5 @@ class PlayerList : public std::array<Player*, 6> {
   PlayerList(const std::array<Player*, 6>& arr);
   ~PlayerList();
 
-  void Display(float x, float y);
+  void Display(float x, float y, int tuileSize);
 };

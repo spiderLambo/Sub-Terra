@@ -1,7 +1,8 @@
 #include "display/entities/player.h"
 
-PlayerDisplay::PlayerDisplay(Player* player, sf::Vector2f position)
-    : Circle(16.0f, position, Str_to_color(player->getCouleur()),
+PlayerDisplay::PlayerDisplay(Player* player, sf::Vector2f position,
+                             int tuileSize)
+    : Circle(tuileSize / 6, position, Str_to_color(player->getCouleur()),
              Str_to_color("#000000"), 3.0f) {
   this->player = player;
 }
@@ -10,25 +11,38 @@ PlayerDisplay::~PlayerDisplay() {}
 PlayerList::PlayerList(const std::array<Player*, 6>& arr)
     : std::array<Player*, 6>(arr) {}
 PlayerList::~PlayerList() {}
-void PlayerList::Display(float x, float y) {
+void PlayerList::Display(float x, float y, int tuileSize) {
   if ((*this)[1] == nullptr) {
     if ((*this)[0] != nullptr) {
-      PlayerDisplay p((*this)[0], sf::Vector2f(x + 34.0f, y + 34.0f));
+      PlayerDisplay p((*this)[0],
+                      sf::Vector2f(x + tuileSize / 3, y + tuileSize / 3),
+                      tuileSize);
       p.Display();
     }
   } else if ((*this)[2] == nullptr) {
     if ((*this)[1] != nullptr && (*this)[0] != nullptr) {
-      PlayerDisplay p1((*this)[0], sf::Vector2f(x + 18.0f, y + 18.0f));
-      PlayerDisplay p2((*this)[1], sf::Vector2f(x + 50.0f, y + 50.0f));
+      PlayerDisplay p1(
+          (*this)[0],
+          sf::Vector2f(x + tuileSize * 0.18f, y + tuileSize * 0.18f),
+          tuileSize);
+      PlayerDisplay p2((*this)[1],
+                       sf::Vector2f(x + tuileSize / 2, y + tuileSize / 2),
+                       tuileSize);
       p1.Display();
       p2.Display();
     }
   } else if ((*this)[3] == nullptr) {
     if ((*this)[2] != nullptr && (*this)[1] != nullptr &&
         (*this)[0] != nullptr) {
-      PlayerDisplay p1((*this)[0], sf::Vector2f(x + 34.0f, y + 10.0f));
-      PlayerDisplay p2((*this)[1], sf::Vector2f(x + 10.0f, y + 50.0f));
-      PlayerDisplay p3((*this)[2], sf::Vector2f(x + 58.0f, y + 50.0f));
+      PlayerDisplay p1((*this)[0],
+                       sf::Vector2f(x + tuileSize / 3, y + tuileSize / 10),
+                       tuileSize);
+      PlayerDisplay p2((*this)[1],
+                       sf::Vector2f(x + tuileSize / 10, y + tuileSize / 2),
+                       tuileSize);
+      PlayerDisplay p3((*this)[2],
+                       sf::Vector2f(x + tuileSize * 0.58f, y + tuileSize / 2),
+                       tuileSize);
       p1.Display();
       p2.Display();
       p3.Display();
@@ -36,10 +50,19 @@ void PlayerList::Display(float x, float y) {
   } else if ((*this)[4] == nullptr) {
     if ((*this)[3] != nullptr && (*this)[2] != nullptr &&
         (*this)[1] != nullptr && (*this)[0] != nullptr) {
-      PlayerDisplay p1((*this)[0], sf::Vector2f(x + 10.0f, y + 10.0f));
-      PlayerDisplay p2((*this)[1], sf::Vector2f(x + 10.0f, y + 58.0f));
-      PlayerDisplay p3((*this)[2], sf::Vector2f(x + 58.0f, y + 10.0f));
-      PlayerDisplay p4((*this)[3], sf::Vector2f(x + 58.0f, y + 58.0f));
+      PlayerDisplay p1((*this)[0],
+                       sf::Vector2f(x + tuileSize / 10, y + tuileSize / 10),
+                       tuileSize);
+      PlayerDisplay p2((*this)[1],
+                       sf::Vector2f(x + tuileSize / 10, y + tuileSize * 0.58f),
+                       tuileSize);
+      PlayerDisplay p3((*this)[2],
+                       sf::Vector2f(x + tuileSize * 0.58f, y + tuileSize / 10),
+                       tuileSize);
+      PlayerDisplay p4(
+          (*this)[3],
+          sf::Vector2f(x + tuileSize * 0.58f, y + tuileSize * 0.58f),
+          tuileSize);
       p1.Display();
       p2.Display();
       p3.Display();
@@ -49,11 +72,22 @@ void PlayerList::Display(float x, float y) {
     if ((*this)[4] != nullptr && (*this)[3] != nullptr &&
         (*this)[2] != nullptr && (*this)[1] != nullptr &&
         (*this)[0] != nullptr) {
-      PlayerDisplay p1((*this)[0], sf::Vector2f(x + 5.0f, y + 5.0f));
-      PlayerDisplay p2((*this)[1], sf::Vector2f(x + 5.0f, y + 63.0f));
-      PlayerDisplay p3((*this)[2], sf::Vector2f(x + 63.0f, y + 5.0f));
-      PlayerDisplay p4((*this)[3], sf::Vector2f(x + 63.0f, y + 63.0f));
-      PlayerDisplay p5((*this)[4], sf::Vector2f(x + 34.0f, y + 34.0f));
+      PlayerDisplay p1((*this)[0],
+                       sf::Vector2f(x + tuileSize / 20, y + tuileSize / 20),
+                       tuileSize);
+      PlayerDisplay p2((*this)[1],
+                       sf::Vector2f(x + tuileSize / 20, y + tuileSize * 0.63f),
+                       tuileSize);
+      PlayerDisplay p3((*this)[2],
+                       sf::Vector2f(x + tuileSize * 0.63f, y + tuileSize / 20),
+                       tuileSize);
+      PlayerDisplay p4(
+          (*this)[3],
+          sf::Vector2f(x + tuileSize * 0.63f, y + tuileSize * 0.63f),
+          tuileSize);
+      PlayerDisplay p5((*this)[4],
+                       sf::Vector2f(x + tuileSize / 3, y + tuileSize / 3),
+                       tuileSize);
       p1.Display();
       p2.Display();
       p3.Display();
@@ -64,12 +98,26 @@ void PlayerList::Display(float x, float y) {
     if ((*this)[5] != nullptr && (*this)[4] != nullptr &&
         (*this)[3] != nullptr && (*this)[2] != nullptr &&
         (*this)[1] != nullptr && (*this)[0] != nullptr) {
-      PlayerDisplay p1((*this)[0], sf::Vector2f(x + 5.0f, y + 5.0f));
-      PlayerDisplay p2((*this)[1], sf::Vector2f(x + 42.0f, y + 5.0f));
-      PlayerDisplay p3((*this)[2], sf::Vector2f(x + 20.0f, y + 35.0f));
-      PlayerDisplay p4((*this)[3], sf::Vector2f(x + 63.0f, y + 35.0f));
-      PlayerDisplay p5((*this)[4], sf::Vector2f(x + 5.0f, y + 63.0f));
-      PlayerDisplay p6((*this)[5], sf::Vector2f(x + 42.0f, y + 63.0f));
+      PlayerDisplay p1((*this)[0],
+                       sf::Vector2f(x + tuileSize / 20, y + tuileSize / 20),
+                       tuileSize);
+      PlayerDisplay p2((*this)[1],
+                       sf::Vector2f(x + tuileSize * 0.42f, y + tuileSize / 20),
+                       tuileSize);
+      PlayerDisplay p3((*this)[2],
+                       sf::Vector2f(x + tuileSize / 5, y + tuileSize * 0.35f),
+                       tuileSize);
+      PlayerDisplay p4(
+          (*this)[3],
+          sf::Vector2f(x + tuileSize * 0.63f, y + tuileSize * 0.35f),
+          tuileSize);
+      PlayerDisplay p5((*this)[4],
+                       sf::Vector2f(x + tuileSize / 20, y + tuileSize * 0.63f),
+                       tuileSize);
+      PlayerDisplay p6(
+          (*this)[5],
+          sf::Vector2f(x + tuileSize * 0.42f, y + tuileSize * 0.63f),
+          tuileSize);
       p3.Display();
       p1.Display();
       p2.Display();

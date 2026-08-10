@@ -1,7 +1,8 @@
 #include "display/scenes/game.h"
 
-Game::Game()
-    : plateauData({nullptr}),
+Game::Game(PlayerList players)
+    : players(players),
+      plateauData(this->players),
       plateau(&plateauData),
       coordonesPlateau(3, 3),
       click(false),
