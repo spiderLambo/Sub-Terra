@@ -24,5 +24,5 @@ class PlateauDisplay {
  public:
   PlateauDisplay(Plateau* plateau);
   ~PlateauDisplay();
-  void Display(int x, int y);
+  void Display(int x, int y, int& tuileSize);
 };

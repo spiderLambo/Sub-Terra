@@ -41,15 +41,18 @@ void TuileDisplay::Display() {
 
 PlateauDisplay::PlateauDisplay(Plateau* plateau) { this->plateau = plateau; }
 PlateauDisplay::~PlateauDisplay() {}
-void PlateauDisplay::Display(int x, int y) {
+void PlateauDisplay::Display(int x, int y, int& tuileSize) {
   std::pair<std::pair<int, int>, std::pair<int, int>> dim =
       plateau->getDimensions();
 
-  int tuileSize = static_cast<int>(std::min(
-      (0.7f * ::window.Width() - 22) /
-          (dim.second.second - dim.first.second + 1),
-      (::window.Height() - 70.0f) / (dim.second.first - dim.first.first + 1)));
-  tuileSize = std::min(tuileSize, 100);
+  if (tuileSize == -1) {
+    tuileSize = static_cast<int>(
+        std::min((0.7f * ::window.Width() - 22) /
+                     (dim.second.second - dim.first.second + 1),
+                 (::window.Height() - 70.0f) /
+                     (dim.second.first - dim.first.first + 1)));
+    tuileSize = std::min(tuileSize, 100);
+  }
 
   for (int i = dim.first.first; i <= dim.second.first; ++i) {
     for (int j = dim.first.second; j <= dim.second.second; ++j) {

@@ -10,6 +10,7 @@ class Game : public Scene {
 
   bool click;
   std::pair<int, int> coordonnesClick;
+  int tuileSize;
 
   void VuePlateau();
 

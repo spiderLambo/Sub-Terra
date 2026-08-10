@@ -3,8 +3,9 @@
 Game::Game()
     : plateauData({nullptr}),
       plateau(&plateauData),
-      coordonesPlateau(13, 13),
-      click(false) {
+      coordonesPlateau(3, 3),
+      click(false),
+      tuileSize(-1) {
   plateauData.placerTuile(EMANATION, {true, true, true, true}, 66, 66, 0);
   plateauData.placerTuile(EMANATION, {true, true, true, true}, 69, 66, 0);
   plateauData.placerTuile(EMANATION, {true, true, false, true}, 70, 66, 0);
@@ -17,7 +18,7 @@ Game::~Game() {}
 
 void Game::VuePlateau() {
   view({0.7f * windowWidth, windowHeight - 50.0f}, {10.0f, 10.0f}, [this]() {
-    plateau.Display(coordonesPlateau.first, coordonesPlateau.second);
+    plateau.Display(coordonesPlateau.first, coordonesPlateau.second, tuileSize);
   });
 }
 
@@ -63,6 +64,19 @@ void Game::events() {
   if (event.type == sf::Event::MouseButtonReleased) {
     if (event.mouseButton.button == sf::Mouse::Left) {
       click = false;
+    }
+  }
+
+  if (event.type == sf::Event::MouseWheelScrolled) {
+    if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
+      float delta = event.mouseWheelScroll.delta;
+
+      if (delta > 0 and tuileSize < 200) {
+        tuileSize += 10;
+      } else if (delta < 0 and tuileSize > 20) {
+        tuileSize -= 10;
+        if (tuileSize < 0) tuileSize = 0;
+      }
     }
   }
 }
