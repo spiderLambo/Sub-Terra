@@ -23,8 +23,11 @@ void Game::VuePlateau() {
 }
 
 void Game::afficher() {
-  VuePlateau();
+  Image bg("src/display/assets/bg.png", windowWidth);
+  bg.Display();
+
   dessinerContours();
+  VuePlateau();
 }
 void Game::events() {
   Scene::events();
@@ -98,8 +101,9 @@ void Game::dessinerContours() {
   float stackHeight = 0.9f * windowWidth / 6.5f;
 
   Rectangle ZonePlateau(sf::Vector2f(0.7f * windowWidth, windowHeight - 50),
-                        sf::Vector2f(10.0f, 10.0f), sf::Color::Transparent,
-                        sf::Color::White, 5.0f);
+                        sf::Vector2f(10.0f, 10.0f),
+                        sf::Color(0x00, 0x00, 0x00, 0x88), sf::Color::White,
+                        5.0f);
   ZonePlateau.Display();
 
   Rectangle ZonePerso(

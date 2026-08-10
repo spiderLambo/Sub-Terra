@@ -1,5 +1,6 @@
 #include <algorithm>
 
+#include "display/engine/texture.h"
 #include "display/entities/plateau.h"
 #include "display/scenes/scene.h"
 
