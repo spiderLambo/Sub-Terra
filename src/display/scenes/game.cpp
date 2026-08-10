@@ -30,35 +30,46 @@ void Game::events() {
   Scene::events();
 
   if (event.type == sf::Event::KeyPressed) {
-    if (event.key.code == sf::Keyboard::Left) coordonesPlateau.first -= 10;
-    if (event.key.code == sf::Keyboard::Right) coordonesPlateau.first += 10;
-    if (event.key.code == sf::Keyboard::Up) coordonesPlateau.second -= 10;
-    if (event.key.code == sf::Keyboard::Down) coordonesPlateau.second += 10;
+    int step = 10;
+    if (event.key.code == sf::Keyboard::Left) coordonesPlateau.first += step;
+    if (event.key.code == sf::Keyboard::Right) coordonesPlateau.first -= step;
+    if (event.key.code == sf::Keyboard::Up) coordonesPlateau.second += step;
+    if (event.key.code == sf::Keyboard::Down) coordonesPlateau.second -= step;
+
+    int minX = -500, maxX = 500;
+    int minY = -500, maxY = 500;
+
+    coordonesPlateau.first = std::clamp(coordonesPlateau.first, minX, maxX);
+    coordonesPlateau.second = std::clamp(coordonesPlateau.second, minY, maxY);
   }
 
   if (event.type == sf::Event::MouseButtonPressed) {
-    if (event.mouseButton.button == sf::Mouse::Left and
-        (15 < event.mouseButton.x and
-         0.7f * windowWidth > event.mouseButton.x) and
-        (15 < event.mouseButton.y and
-         windowHeight - 50.0f > event.mouseButton.y)) {
+    if (event.mouseButton.button == sf::Mouse::Left &&
+        (15 < event.mouseButton.x &&
+         event.mouseButton.x < 0.7f * windowWidth) &&
+        (15 < event.mouseButton.y &&
+         event.mouseButton.y < windowHeight - 50.0f)) {
       coordonnesClick.first = event.mouseButton.x;
       coordonnesClick.second = event.mouseButton.y;
       click = true;
     }
   }
 
-  if (event.type == sf::Event::MouseMoved) {
-    if (click) {
-      int deltaX = event.mouseMove.x - coordonnesClick.first;
-      int deltaY = event.mouseMove.y - coordonnesClick.second;
+  if (event.type == sf::Event::MouseMoved && click) {
+    int deltaX = event.mouseMove.x - coordonnesClick.first;
+    int deltaY = event.mouseMove.y - coordonnesClick.second;
 
-      coordonesPlateau.first += deltaX;
-      coordonesPlateau.second += deltaY;
+    int newX = coordonesPlateau.first + deltaX;
+    int newY = coordonesPlateau.second + deltaY;
 
-      coordonnesClick.first = event.mouseMove.x;
-      coordonnesClick.second = event.mouseMove.y;
-    }
+    int minX = -500, maxX = 500;
+    int minY = -500, maxY = 500;
+
+    coordonesPlateau.first = std::clamp(newX, minX, maxX);
+    coordonesPlateau.second = std::clamp(newY, minY, maxY);
+
+    coordonnesClick.first = event.mouseMove.x;
+    coordonnesClick.second = event.mouseMove.y;
   }
 
   if (event.type == sf::Event::MouseButtonReleased) {
@@ -71,11 +82,10 @@ void Game::events() {
     if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
       float delta = event.mouseWheelScroll.delta;
 
-      if (delta > 0 and tuileSize < 200) {
+      if (delta > 0 && tuileSize < 200) {
         tuileSize += 10;
-      } else if (delta < 0 and tuileSize > 20) {
+      } else if (delta < 0 && tuileSize > 20) {
         tuileSize -= 10;
-        if (tuileSize < 0) tuileSize = 0;
       }
     }
   }

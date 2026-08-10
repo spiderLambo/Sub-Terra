@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "display/entities/plateau.h"
 #include "display/scenes/scene.h"
 
