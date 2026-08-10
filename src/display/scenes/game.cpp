@@ -28,6 +28,10 @@ void Game::afficher() {
 
   dessinerContours();
   VuePlateau();
+
+  Image recenter("src/display/assets/recenter.png", 32,
+                 {-22 + 0.7f * windowWidth, 10});
+  recenter.Display();
 }
 void Game::events() {
   Scene::events();
@@ -47,11 +51,19 @@ void Game::events() {
   }
 
   if (event.type == sf::Event::MouseButtonPressed) {
-    if (event.mouseButton.button == sf::Mouse::Left &&
-        (15 < event.mouseButton.x &&
-         event.mouseButton.x < 0.7f * windowWidth) &&
-        (15 < event.mouseButton.y &&
-         event.mouseButton.y < windowHeight - 50.0f)) {
+    float btnX = 0.7f * windowWidth - 22.0f;
+    float btnY = 10.0f;
+    float btnSize = 32.0f;
+
+    if (event.mouseButton.x >= btnX && event.mouseButton.x <= btnX + btnSize &&
+        event.mouseButton.y >= btnY && event.mouseButton.y <= btnY + btnSize) {
+      coordonesPlateau = {3, 3};
+      tuileSize = -1;
+    } else if (event.mouseButton.button == sf::Mouse::Left &&
+               (15 < event.mouseButton.x &&
+                event.mouseButton.x < 0.7f * windowWidth) &&
+               (15 < event.mouseButton.y &&
+                event.mouseButton.y < windowHeight - 50.0f)) {
       coordonnesClick.first = event.mouseButton.x;
       coordonnesClick.second = event.mouseButton.y;
       click = true;
