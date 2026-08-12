@@ -2,7 +2,7 @@
 
 TuileDisplay::TuileDisplay(Tuile* tuile, sf::Vector2f position, int size)
     : Rectangle(sf::Vector2f(size, size), position,
-                Str_to_color(tuile->couleur)) {
+                Str_to_color(tuile->getCouleur())) {
   this->tuile = tuile;
   this->size = size;
 }

@@ -23,14 +23,15 @@ class Tuile {
   int id;
   enum TuileType type;
   std::array<bool, 4> acces;
+  std::string couleur = "#FFFFFF";
 
  public:
-  std::string couleur = "#FFFFFF";
   Tuile(int id, enum TuileType type, std::array<bool, 4> acces,
         std::string couleur);
   virtual ~Tuile() = default;
 
   int getId();
+  std::string getCouleur();
 
   void rotation();
   virtual void effetTuile(std::array<Player*, 6> players,

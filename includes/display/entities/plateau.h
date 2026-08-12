@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "../../plateau.h"
+#include "entities/plateau.h"
 #include "display/engine/geometry.h"
 #include "display/entities/player.h"
-#include "tuiles/tuile.h"
+#include "entities/tuiles/tuile.h"
 #include "utils/Str_to_color.h"
 
 class TuileDisplay : public Rectangle {

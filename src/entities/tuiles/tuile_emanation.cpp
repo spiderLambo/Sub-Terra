@@ -1,4 +1,4 @@
-#include "tuiles/tuile.h"
+#include "entities/tuiles/tuile.h"
 
 TuileEmanation::TuileEmanation(int id, std::array<bool, 4> acces) : Tuile(id, EMANATION, acces, "#50FF3D") { }
 

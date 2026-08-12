@@ -1,4 +1,4 @@
-#include "plateau.h"
+#include "entities/plateau.h"
 
 Plateau::Plateau(std::array<Player*, 6> players) {
   this->players = players;

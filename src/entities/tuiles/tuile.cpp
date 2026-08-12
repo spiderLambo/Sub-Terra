@@ -1,4 +1,4 @@
-#include "tuiles/tuile.h"
+#include "entities/tuiles/tuile.h"
 
 Tuile::Tuile(int id, enum TuileType type, std::array<bool, 4> acces, std::string couleur) {
   this->id = id;
@@ -8,6 +8,8 @@ Tuile::Tuile(int id, enum TuileType type, std::array<bool, 4> acces, std::string
 }
 
 int Tuile::getId() { return id; }
+
+std::string Tuile::getCouleur() { return couleur; }
 
 void Tuile::rotation() {
   bool temp = acces[3];
