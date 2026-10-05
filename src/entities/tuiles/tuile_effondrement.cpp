@@ -1,4 +1,4 @@
-#include "entities/tuiles/tuile.h"
+#include "entities/tuile.h"
 
 TuileEffondrement::TuileEffondrement(int id, std::array<bool, 4> acces, std::pair<int,int> numEboulement) : Tuile(id, EFFONDREMENT, acces, "#594609") {
   this->numEboulement = numEboulement;

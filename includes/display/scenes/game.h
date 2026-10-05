@@ -1,5 +1,3 @@
-#include <algorithm>
-
 #include "display/engine/texture.h"
 #include "display/entities/plateau.h"
 #include "display/scenes/scene.h"
@@ -15,11 +13,17 @@ class Game : public Scene {
   bool click;
   std::pair<int, int> coordonnesClick;
   int tuileSize;
+  Dice dice;
+  unsigned int diceResult;
 
   void VuePlateau();
 
   void afficher() override;
   void events() override;
+
+  void rollADice(unsigned int r);
+
+  void DisplayRoll();
 
   void dessinerContours();
 

@@ -1,3 +1,3 @@
-#include "entities/tuiles/tuile.h"
+#include "entities/tuile.h"
 
 TuileDepart::TuileDepart(int id) : Tuile(id, DEPART, {true, true, true, true}, "#17540F") { }

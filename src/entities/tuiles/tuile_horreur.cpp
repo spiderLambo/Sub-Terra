@@ -1,4 +1,4 @@
-#include "entities/tuiles/tuile.h"
+#include "entities/tuile.h"
 
 TuileHorreur::TuileHorreur(int id, std::array<bool, 4> acces) : Tuile(id, HORREUR, acces, "#000000") { }
 

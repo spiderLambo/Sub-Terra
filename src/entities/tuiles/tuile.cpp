@@ -1,4 +1,4 @@
-#include "entities/tuiles/tuile.h"
+#include "entities/tuile.h"
 
 Tuile::Tuile(int id, enum TuileType type, std::array<bool, 4> acces, std::string couleur) {
   this->id = id;

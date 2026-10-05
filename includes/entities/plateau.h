@@ -3,7 +3,7 @@
 #include <array>
 #include <vector>
 
-#include "entities/tuiles/tuile.h"
+#include "entities/tuile.h"
 
 class Plateau {
  private:

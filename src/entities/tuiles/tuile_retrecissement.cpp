@@ -1,3 +1,3 @@
-#include "entities/tuiles/tuile.h"
+#include "entities/tuile.h"
 
 TuileRetrecissement::TuileRetrecissement(int id, std::array<bool, 4> acces) : Tuile(id, RETRECISSEMENT, acces, "#FFC003") { }

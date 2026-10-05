@@ -1,6 +1,7 @@
 #include <functional>
 
 #include "display/engine/window.h"
+#include "display/utils/dice.h"
 
 class Scene {
  private:

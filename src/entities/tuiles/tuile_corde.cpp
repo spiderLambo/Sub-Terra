@@ -1,4 +1,4 @@
-#include "entities/tuiles/tuile.h"
+#include "entities/tuile.h"
 
 TuileCorde::TuileCorde(int id, int cordeDir, enum TuileType type) : Tuile(id, type, {true, false, true, false}, "#BD8AFF") {
   this->cordeDir = cordeDir;

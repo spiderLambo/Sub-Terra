@@ -1,3 +1,5 @@
+#pragma once
+
 #include "display/engine/window.h"
 
 class Image : public sf::Sprite {
