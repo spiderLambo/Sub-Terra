@@ -7,14 +7,9 @@ Game::Game(PlayerList players)
       coordonesPlateau(3, 3),
       click(false),
       tuileSize(-1),
-      dice({windowWidth/2,windowHeight/2}) {
+      dice({windowWidth / 2, windowHeight / 2}) {
   plateauData.placerTuile(EMANATION, {true, true, true, true}, 66, 66, 0);
-  plateauData.placerTuile(EMANATION, {true, true, true, true}, 69, 66, 0);
-  plateauData.placerTuile(EMANATION, {true, true, false, true}, 70, 66, 0);
-  plateauData.placerTuile(EMANATION, {true, true, true, true}, 70, 70, 0);
-  plateauData.placerTuile(EMANATION, {true, false, false, true}, 70, 74, 0);
-  plateauData.placerTuile(EMANATION, {false, true, true, false}, 73, 74, 0);
-  plateauData.placerTuile(EMANATION, {true, true, true, true}, 74, 74, 0);
+  plateauData.placerTuile(EMANATION, {true, false, true, false}, 69, 66, 0);
   rollADice(RollDice());
 }
 Game::~Game() {}
@@ -36,13 +31,10 @@ void Game::afficher() {
                  {-22 + 0.7f * windowWidth, 10});
   recenter.Display();
 
-
   if (dice.isRolling()) {
-    Rectangle filter(
-      sf::Vector2f(windowWidth,windowHeight),
-      sf::Vector2f(0, 0), sf::Color(0x00, 0x00, 0x00, 0x88)
-    );
-      filter.Display();
+    Rectangle filter(sf::Vector2f(windowWidth, windowHeight),
+                     sf::Vector2f(0, 0), sf::Color(0x00, 0x00, 0x00, 0x88));
+    filter.Display();
 
     dice.DisplayRoll(diceResult);
   }
@@ -150,7 +142,7 @@ void Game::dessinerContours() {
   ZoneAutreJoueurs.Display();
 }
 
-void Game::rollADice (unsigned int r) {
+void Game::rollADice(unsigned int r) {
   dice.NowRoll();
   diceResult = r;
 }

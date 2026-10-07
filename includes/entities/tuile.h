@@ -103,7 +103,7 @@ class TuileHorreur : public Tuile {
 
 class TuileRetrecissement : public Tuile {
  public:
-  TuileRetrecissement(int id, std::array<bool, 4> acces);
+  TuileRetrecissement(int id);
 };
 
 class TuileCorde : public Tuile {
@@ -119,6 +119,6 @@ class TuileCorde : public Tuile {
 
 class TuileTerrainAccidente : public Tuile {
  public:
-  TuileTerrainAccidente(int id, std::array<bool, 4> acces);
+  TuileTerrainAccidente(int id);
   void effetArriveeJoueur(Player* player) override;
 };

@@ -78,7 +78,7 @@ void Plateau::placerTuile(enum TuileType type, std::array<bool, 4> acces, int x,
       tuilesHorreur.push_back(tuile);
       break;
     case RETRECISSEMENT:
-      tuile = new TuileRetrecissement(id, acces);
+      tuile = new TuileRetrecissement(id);
       break;
     case CORNICHE:
       tuile = new TuileCorde(id, dir, CORNICHE);
@@ -87,7 +87,7 @@ void Plateau::placerTuile(enum TuileType type, std::array<bool, 4> acces, int x,
       tuile = new TuileCorde(id, (dir + 2) % 4, CHUTE);
       break;
     case TERRAIN_ACCIDENTE:
-      tuile = new TuileTerrainAccidente(id, acces);
+      tuile = new TuileTerrainAccidente(id);
       break;
     default:
       return;

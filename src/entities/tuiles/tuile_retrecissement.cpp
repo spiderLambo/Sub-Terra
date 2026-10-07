@@ -1,3 +1,4 @@
 #include "entities/tuile.h"
 
-TuileRetrecissement::TuileRetrecissement(int id, std::array<bool, 4> acces) : Tuile(id, RETRECISSEMENT, acces, "#FFC003") { }
+TuileRetrecissement::TuileRetrecissement(int id)
+    : Tuile(id, RETRECISSEMENT, {true, false, true, false}, "#FFC003") {}
