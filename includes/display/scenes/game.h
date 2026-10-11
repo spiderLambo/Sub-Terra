@@ -1,5 +1,6 @@
 #include "display/engine/texture.h"
 #include "display/entities/plateau.h"
+#include "display/entities/stack.h"
 #include "display/scenes/scene.h"
 
 class Game : public Scene {
@@ -15,6 +16,9 @@ class Game : public Scene {
   int tuileSize;
   Dice dice;
   unsigned int diceResult;
+
+  Stack stack;
+  Image bg;
 
   void VuePlateau();
 

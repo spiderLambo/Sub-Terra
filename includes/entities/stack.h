@@ -16,5 +16,4 @@ class GameStack : public std::stack<Tuile*> {
  public:
   GameStack();
   ~GameStack();
-  void DebugDisplay();
 };

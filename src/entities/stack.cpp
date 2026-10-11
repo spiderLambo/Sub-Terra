@@ -97,16 +97,3 @@ tableau GameStack::buildTableau() {
 
   return t;
 }
-
-void GameStack::DebugDisplay() {
-  std::stack<Tuile*> s;
-  while (!empty()) {
-    std::cout << top()->getId() << std::endl;
-    s.push(top());
-    pop();
-  }
-  while (!s.empty()) {
-    push(s.top());
-    s.pop();
-  }
-}

@@ -7,7 +7,13 @@ Game::Game(PlayerList players)
       coordonesPlateau(3, 3),
       click(false),
       tuileSize(-1),
-      dice({windowWidth / 2, windowHeight / 2}) {
+      dice({windowWidth / 2, windowHeight / 2}),
+      stack(sf::Vector2f(0.9f * windowWidth / 6.5f - 40,
+                         0.9f * windowWidth / 6.5f - 40),
+            sf::Vector2f(0.7f * windowWidth + 50,
+                         20 + 12 * (0.3f * windowWidth) / 18.5f),
+            new GameStack),
+      bg("src/display/assets/bg.png", windowWidth) {
   plateauData.placerTuile(EMANATION, {true, true, true, true}, 66, 66, 0);
   plateauData.placerTuile(EMANATION, {true, false, true, false}, 69, 66, 0);
   rollADice(RollDice());
@@ -21,7 +27,6 @@ void Game::VuePlateau() {
 }
 
 void Game::afficher() {
-  Image bg("src/display/assets/bg.png", windowWidth);
   bg.Display();
 
   dessinerContours();
@@ -30,6 +35,8 @@ void Game::afficher() {
   Image recenter("src/display/assets/recenter.png", 32,
                  {-22 + 0.7f * windowWidth, 10});
   recenter.Display();
+
+  stack.Display();
 
   if (dice.isRolling()) {
     Rectangle filter(sf::Vector2f(windowWidth, windowHeight),
@@ -131,7 +138,8 @@ void Game::dessinerContours() {
 
   Rectangle StackEtDangers(sf::Vector2f(leftX, stackHeight),
                            sf::Vector2f(rightWidth, personHeight + 35),
-                           sf::Color::Green, sf::Color::White, 5.0f);
+                           sf::Color(0xff, 0xff, 0xff, 0x88), sf::Color::White,
+                           5.0f);
   StackEtDangers.Display();
 
   Rectangle ZoneAutreJoueurs(
